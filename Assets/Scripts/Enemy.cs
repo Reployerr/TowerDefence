@@ -4,34 +4,54 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public int health{ get; protected set; } = 10;
-    public float moveSpeed { get; protected set; } = 10;
+    public int EnemyHealth{ get; protected set; } = 10;
+    public float EnemyMoveSpeed { get; protected set; } = 10;
 
-    public static Transform targetPosition;
     private int pathIndex = 0;
 
-    private void Start()
+    public Rigidbody2D EnemyRigidBody { get; protected set; } = null;
+    public Transform targetPosition;
+
+    public Enemy(float moveSpeed, int health) 
     {
-        targetPosition = LevelManager.main.path[pathIndex];
+        EnemyMoveSpeed = moveSpeed;
+        EnemyHealth = health;
     }
 
-    private void Update()
+    public Enemy(Rigidbody2D rb)
     {
-        if(Vector2.Distance(targetPosition.position, transform.position) <= 0.1f)
+        EnemyRigidBody = rb;
+    }
+
+    public void GetTargetPos() //to start
+    {
+        targetPosition = LevelManager.main.path[pathIndex];
+        Debug.Log("keke");
+    }
+
+    public void GetDistance()//to update
+    {
+
+        if (Vector2.Distance(targetPosition.position, transform.position) <= 0.1f)
         {
             pathIndex++;
-
-            if(pathIndex == LevelManager.main.path.Length)
+            
+            if (pathIndex == LevelManager.main.path.Length)
             {
                 Destroy(gameObject);
                 return;
             }
+
+            else
+            {
+                targetPosition = LevelManager.main.path[pathIndex];
+            }
         }
     }
 
-    private void FixedUpdate()
+    public virtual void Move() //to fixedupdate
     {
-        
+        Vector2 direction = (targetPosition.position - transform.position).normalized;
+        EnemyRigidBody.velocity = direction * EnemyMoveSpeed;
     }
-
 }

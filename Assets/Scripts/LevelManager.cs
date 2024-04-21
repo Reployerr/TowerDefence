@@ -13,4 +13,9 @@ public class LevelManager : MonoBehaviour
     {
         main = this;
     }
+
+    private void Start()
+    {
+        Debug.Log(path.Length);
+    }
 }

@@ -4,16 +4,43 @@ using UnityEngine;
 
 public class Troll : Enemy
 {
-    private float trollSpeed;
-    
-  [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float trollSpeed = 1f;
+    [SerializeField] private int trollHealth = 5;
+    private Rigidbody2D trollRigidbody;
 
-    Transform target = Enemy.targetPosition;
+    public Troll(float moveSpeed, int health) : base(moveSpeed, health)
+    {
+    }
+
+    public Troll(Rigidbody2D rb) : base(rb)
+    {
+    }
+
+    private void Awake()
+    {
+        trollRigidbody = GetComponent<Rigidbody2D>();
+        EnemyRigidBody = trollRigidbody;
+    }
+    private void Start()
+    {
+        GetTargetPos();
+    }
+
+    private void Update()
+    {
+        GetDistance();
+        EnemyMoveSpeed = trollSpeed;
+        EnemyHealth = trollHealth;
+    }
 
     private void FixedUpdate()
     {
-        Vector2 direction = (target.position - transform.position).normalized;
+        MoveEnemy();
+    }
 
-        rb.velocity = direction * trollSpeed;
+
+    public void MoveEnemy()
+    {
+        base.Move();
     }
 }

@@ -12,9 +12,6 @@ public class TowerPlacer : MonoBehaviour
 
     private Camera _mainCamera;
 
-    private Ray _ray;
-    private RaycastHit _hit;
-
     private void Awake()
     {
         _mainCamera = Camera.main;
@@ -27,27 +24,22 @@ public class TowerPlacer : MonoBehaviour
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                if(_toBuild.activeSelf) _toBuild.SetActive(false);
+                if (_toBuild.activeSelf) _toBuild.SetActive(false);
             }
+
             else if (!_toBuild.activeSelf) _toBuild.SetActive(true);
-            //only works in 3d
-            _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-                
-            if (Physics.Raycast(_ray, out _hit, 1000f, groundLayerMask))
-           {
+
+            Vector3 mouseWorldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPosition.z = 0f;
+            if (Physics2D.Raycast(mouseWorldPosition, mouseWorldPosition, 1000f, groundLayerMask))
+            {
                 if (!_toBuild.activeSelf) _toBuild.SetActive(true);
+                Debug.Log("groundLayer");
+                _toBuild.transform.position = mouseWorldPosition;
+            }
+            else if (_toBuild.activeSelf) _toBuild.SetActive(false);
 
-                _toBuild.transform.position = _hit.point;
-           }
-           
-           else if (_toBuild.activeSelf) _toBuild.SetActive(false);
-        }
-        //////////////////////////////////////////////
-        ///
-
-        RaycastHit2D ray = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
-        Ray2D ray2d = Physics2D.
-        if (Physics2D.Raycast(ray, ))
+        }  
 
     }
 

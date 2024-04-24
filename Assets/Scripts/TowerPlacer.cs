@@ -27,7 +27,7 @@ public class TowerPlacer : MonoBehaviour
         
         if (_buildingPrefab != null)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
                 if (_toBuild.activeSelf) _toBuild.SetActive(false);
             }
@@ -39,20 +39,21 @@ public class TowerPlacer : MonoBehaviour
 
             if (Physics2D.Raycast(mouseWorldPosition, _mainCamera.transform.position, 0.3f, groundLayerMask))
             {
-                prefabSprite.color = Color.white;
                 Debug.DrawRay(mouseWorldPosition, _mainCamera.transform.position, Color.red);
                 if (!_toBuild.activeSelf) _toBuild.SetActive(true);
                 Debug.Log("groundLayer");
                 _toBuild.transform.position = mouseWorldPosition;
-                
+                prefabSprite = _toBuild.GetComponent<SpriteRenderer>();
+                prefabSprite.color = new Color(0, 255, 12);
+
             }
             else if (_toBuild.activeSelf) _toBuild.SetActive(false);
 
             if(Physics2D.Raycast(mouseWorldPosition, _mainCamera.transform.position, 0.3f, roadLayerMask))
             {
                 Debug.Log("road triggered");
-                prefabSprite.color = Color.red;
-                
+                prefabSprite = _toBuild.GetComponent<SpriteRenderer>();
+                prefabSprite.color = new Color(255, 0, 0);
             }
         }  
 
@@ -61,7 +62,7 @@ public class TowerPlacer : MonoBehaviour
     public void SetBuildingPrefab(GameObject prefab)
     {
         _buildingPrefab = prefab;
-        prefabSprite = _buildingPrefab.GetComponent<SpriteRenderer>();
+        
         PrepareBuilding();
     }
 
@@ -71,7 +72,9 @@ public class TowerPlacer : MonoBehaviour
         if (_toBuild) Destroy(_toBuild);
 
         _toBuild = Instantiate(_buildingPrefab);
+        prefabSprite = _toBuild.GetComponent<SpriteRenderer>();
+        prefabSprite.color = new Color(255, 0, 0);
         _toBuild.SetActive(false);
-        prefabSprite.color = Color.white;
+
     }
 }

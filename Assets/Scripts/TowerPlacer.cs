@@ -5,12 +5,12 @@ using UnityEngine.EventSystems;
 
 public class TowerPlacer : MonoBehaviour
 {
-    public LayerMask groundLayerMask;
-    public LayerMask roadLayerMask;
+    public LayerMask groundLayerMask;//маска земли
+    public LayerMask roadLayerMask;//маска дороги
 
-    private GameObject _buildingPrefab;
-    private GameObject _toBuild;
-    private SpriteRenderer prefabSprite;
+    private GameObject _buildingPrefab; //префаб башни
+    private GameObject _toBuild; //объект выбранной башни привязанный к мыши на основе префаба 
+    private SpriteRenderer prefabSprite; //спрайт выбранной башни
      
     
 
@@ -34,25 +34,26 @@ public class TowerPlacer : MonoBehaviour
 
             else if (!_toBuild.activeSelf) _toBuild.SetActive(true);
 
-            Vector3 mouseWorldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mouseWorldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition); // позиция мыши 
             mouseWorldPosition.z = 0f;
 
-            if (Physics2D.Raycast(mouseWorldPosition, _mainCamera.transform.position, 0.3f, groundLayerMask))
+            if (Physics2D.Raycast(mouseWorldPosition, _mainCamera.transform.position, 0.3f/*размер луча*/, groundLayerMask))
             {
                 Debug.DrawRay(mouseWorldPosition, _mainCamera.transform.position, Color.red);
                 if (!_toBuild.activeSelf) _toBuild.SetActive(true);
                 Debug.Log("groundLayer");
                 _toBuild.transform.position = mouseWorldPosition;
-                prefabSprite = _toBuild.GetComponent<SpriteRenderer>();
+
+                //изменения цвета выбранной башни на зеленый если на земле 
                 prefabSprite.color = new Color(0, 255, 12);
 
             }
             else if (_toBuild.activeSelf) _toBuild.SetActive(false);
 
-            if(Physics2D.Raycast(mouseWorldPosition, _mainCamera.transform.position, 0.3f, roadLayerMask))
+            if(Physics2D.Raycast(mouseWorldPosition, _mainCamera.transform.position, 0.3f/*размер луча*/, roadLayerMask))
             {
                 Debug.Log("road triggered");
-                prefabSprite = _toBuild.GetComponent<SpriteRenderer>();
+                //изменения цвета выбранной башни на красный если на дороге 
                 prefabSprite.color = new Color(255, 0, 0);
             }
         }  
@@ -68,13 +69,12 @@ public class TowerPlacer : MonoBehaviour
 
     private void PrepareBuilding()
     {
-
         if (_toBuild) Destroy(_toBuild);
 
         _toBuild = Instantiate(_buildingPrefab);
+
         prefabSprite = _toBuild.GetComponent<SpriteRenderer>();
         prefabSprite.color = new Color(255, 0, 0);
         _toBuild.SetActive(false);
-
     }
 }

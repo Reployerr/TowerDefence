@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Env
+  - Ground
+  - Road
   layers:
   - Default
   - TransparentFX
@@ -13,7 +16,7 @@ TagManager:
   - UI
   - Ground
   - Road
-  - 
+  - Tower
   - 
   - 
   - 
@@ -41,6 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 3542686383
+    locked: 0
+  - name: Road
+    uniqueID: 2765976269
+    locked: 0
   - name: Trees
     uniqueID: 1242673929
     locked: 0
@@ -49,4 +58,7 @@ TagManager:
     locked: 0
   - name: Buildings
     uniqueID: 3095765027
+    locked: 0
+  - name: UI
+    uniqueID: 2465252429
     locked: 0

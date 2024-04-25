@@ -69,18 +69,18 @@ public class TowerPlacement : MonoBehaviour
         if (selectedTowerPrefab != null)
         {
             Instantiate(selectedTowerPrefab, position, Quaternion.identity);
-            Debug.Log("Tower placed at position: " + position);
+            Debug.Log("Башня распололожена: " + position);
         }
     }
 
-    // Метод для проверки, находится ли указанная позиция над землей
+    //находится ли указанная позиция над землей
     private bool IsMouseOverGround(Vector3 position)
     {
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, Mathf.Infinity, groundLayerMask);
         return hit.collider != null;
     }
 
-    // Метод для проверки, находится ли указанная позиция на дороге
+    //находится ли указанная позиция на дороге
     private bool IsMouseOverRoad(Vector3 position)
     {
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, Mathf.Infinity, roadLayerMask);
@@ -90,7 +90,7 @@ public class TowerPlacement : MonoBehaviour
     // Метод для проверки пересечения с другими башнями
     private bool IsTowerOverlap(GameObject tower)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(tower.transform.position, 0.5f, towerLayerMask);
-        return colliders.Length > 1; // Проверяем, есть ли коллайдеры, кроме самой башни
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(tower.transform.position, 1f, towerLayerMask);
+        return colliders.Length > 1; //есть ли коллайдеры, кроме самой башни
     }
 }

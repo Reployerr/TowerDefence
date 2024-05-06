@@ -9,13 +9,13 @@ public class TowerPlacement : MonoBehaviour
     public Button[] towerButtons; // Массив кнопок для выбора башен
     public GameObject[] towerPrefabs; // Массив префабов башен
 
-    private GameObject selectedTowerPrefab; // Выбранный префаб башни
-    private GameObject currentTower; // Текущая размещенная башня
-    private Camera mainCamera;
+    private GameObject _selectedTowerPrefab; // Выбранный префаб башни
+    private GameObject _currentTower; // Текущая размещенная башня
+    private Camera _mainCamera;
 
     private void Awake()
     {
-        mainCamera = Camera.main;
+        _mainCamera = Camera.main;
         // Назначаем каждой кнопке обработчик нажатия
         for (int i = 0; i < towerButtons.Length; i++)
         {
@@ -26,31 +26,31 @@ public class TowerPlacement : MonoBehaviour
 
     private void Update()
     {
-        if (currentTower != null)
+        if (_currentTower != null)
         {
             // Перемещаем текущую башню за курсором мыши
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
-            currentTower.transform.position = mousePosition;
+            _currentTower.transform.position = mousePosition;
 
             // При нажатии левой кнопки мыши размещаем башню
             if (Input.GetMouseButtonDown(0))
             {
-                if (IsMouseOverGround(mousePosition) && !IsMouseOverRoad(mousePosition) && !IsTowerOverlap(currentTower))
+                if (IsMouseOverGround(mousePosition) && !IsMouseOverRoad(mousePosition) && !IsTowerOverlap(_currentTower))
                 {
                     PlaceTower(mousePosition);
                 }
                 else
                 {
-                    Debug.Log("Cannot place tower at this position.");
+                    Debug.Log("Нельзя разместить");
                 }
             }
 
 			if (Input.GetMouseButtonDown(1))
 			{
                 Debug.Log("RightClick");
-                selectedTowerPrefab = null;
-                currentTower = null;
+                _selectedTowerPrefab = null;
+                _currentTower = null;
 
             }
         }
@@ -61,22 +61,22 @@ public class TowerPlacement : MonoBehaviour
     {
         if (towerIndex >= 0 && towerIndex < towerPrefabs.Length)
         {
-            selectedTowerPrefab = towerPrefabs[towerIndex];
+            _selectedTowerPrefab = towerPrefabs[towerIndex];
             // Создаем новую башню, чтобы она следовала за курсором
-            if (currentTower != null)
+            if (_currentTower != null)
             {
-                Destroy(currentTower);
+                Destroy(_currentTower);
             }
-            currentTower = Instantiate(selectedTowerPrefab);
+            _currentTower = Instantiate(_selectedTowerPrefab);
         }
     }
 
     // Метод для размещения башни на земле
     private void PlaceTower(Vector3 position)
     {
-        if (selectedTowerPrefab != null)
+        if (_selectedTowerPrefab != null)
         {
-            Instantiate(selectedTowerPrefab, position, Quaternion.identity);
+            Instantiate(_selectedTowerPrefab, position, Quaternion.identity);
             Debug.Log("Башня распололожена: " + position);
         }
     }

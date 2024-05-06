@@ -45,6 +45,14 @@ public class TowerPlacement : MonoBehaviour
                     Debug.Log("Cannot place tower at this position.");
                 }
             }
+
+			if (Input.GetMouseButtonDown(1))
+			{
+                Debug.Log("RightClick");
+                selectedTowerPrefab = null;
+                currentTower = null;
+
+            }
         }
     }
 

@@ -148,8 +148,11 @@ MonoBehaviour:
   _enemyMask:
     serializedVersion: 2
     m_Bits: 512
-  _attackRange: 2
+  _towerBullet: {fileID: 5819171185637651769, guid: f2876aad17a027d44b67b7c0f862ea84, type: 3}
+  _shootPoint: {fileID: 1324457705812991473}
+  _attackRange: 10.93
   _rotationSpeed: 200
+  _firingRate: 1
 --- !u!1 &5800164868365781717
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,5 +267,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5156977375907251146}
+  - {fileID: 1324457705812991473}
   m_Father: {fileID: 3527494519070304301}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7030034331024428940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1324457705812991473}
+  m_Layer: 8
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1324457705812991473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7030034331024428940}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.198, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5167408289655250733}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,9 +9,14 @@ public class Bullet : MonoBehaviour
 
 	[Header("Attributes")]
 	[SerializeField] private float _bulletSpeed = 2f;
+	[SerializeField] private int _bulletDamage = 2;
 
 	private Transform _enemy;
+	//private GameObject _enemyObj;
 
+	private void Start()
+	{
+	}
 	public void SetTarget(Transform target)
 	{
 		_enemy = target;
@@ -28,6 +33,11 @@ public class Bullet : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		Destroy(gameObject);
+		if(collision.gameObject.TryGetComponent(out Enemy enemy))
+		{
+			enemy.TakeDamage(_bulletDamage);
+			Debug.Log("enemy hitted");
+			Destroy(gameObject);
+		}	
 	}
 }

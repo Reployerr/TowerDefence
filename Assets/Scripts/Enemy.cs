@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public int EnemyHealth{ get; protected set; } = 10;
-    public float EnemyMoveSpeed { get; protected set; } = 10;
+    public int EnemyHealth { get; protected set; } = 10;
+    public float EnemyMoveSpeed { get; protected set; }
 
     private int pathIndex = 0;
 
@@ -21,6 +21,14 @@ public abstract class Enemy : MonoBehaviour
     public Enemy(Rigidbody2D rb)
     {
         EnemyRigidBody = rb;
+    }
+
+    // TAKING DAMAGE
+    public abstract void TakeDamage(int damage);
+    public virtual void KillEnemy()
+	{
+        Debug.Log("enemy died");
+        Destroy(this.gameObject);
     }
 
     public void GetTargetPos() //to start
@@ -54,4 +62,7 @@ public abstract class Enemy : MonoBehaviour
         Vector2 direction = (targetPosition.position - transform.position).normalized;
         EnemyRigidBody.velocity = direction * EnemyMoveSpeed;
     }
+
+
+
 }

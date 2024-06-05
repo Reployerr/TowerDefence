@@ -28,6 +28,7 @@ public abstract class Enemy : MonoBehaviour
     public virtual void KillEnemy()
 	{
         Debug.Log("enemy died");
+        WaveSpawner.onEnemyDestroy.Invoke();
         Destroy(this.gameObject);
     }
 
@@ -46,6 +47,7 @@ public abstract class Enemy : MonoBehaviour
             
             if (pathIndex == LevelManager.main.path.Length)
             {
+                WaveSpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;
             }

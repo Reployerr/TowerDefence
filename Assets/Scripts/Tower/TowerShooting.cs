@@ -84,7 +84,7 @@ public class TowerShooting : MonoBehaviour
 
     public void ShootEnemy()
 	{
-        GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, Quaternion.identity);
+        GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(_target);
 

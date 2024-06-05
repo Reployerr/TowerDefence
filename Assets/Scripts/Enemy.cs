@@ -8,11 +8,13 @@ public abstract class Enemy : MonoBehaviour
     public float EnemyMoveSpeed { get; protected set; }
 
     private int pathIndex = 0;
+    private int contactDamage = 1;
 
     public Rigidbody2D EnemyRigidBody { get; protected set; } = null;
     public Transform targetPosition;
+    public Player _playerScript;
 
-    public Enemy(float moveSpeed, int health) 
+	public Enemy(float moveSpeed, int health) 
     {
         EnemyMoveSpeed = moveSpeed;
         EnemyHealth = health;
@@ -49,6 +51,7 @@ public abstract class Enemy : MonoBehaviour
             {
                 WaveSpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
+                _playerScript.TakeDamage(contactDamage);
                 return;
             }
 
@@ -64,7 +67,4 @@ public abstract class Enemy : MonoBehaviour
         Vector2 direction = (targetPosition.position - transform.position).normalized;
         EnemyRigidBody.velocity = direction * EnemyMoveSpeed;
     }
-
-
-
 }

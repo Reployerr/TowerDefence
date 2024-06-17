@@ -1,35 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : UI_Health
 {
-	[Header("Variables")]
-	[SerializeField] public int BasePlayerHealth = 10;
-	[SerializeField] private int _playerHealth;
-	[SerializeField] public int BasePlayerMoney = 50;
-	[SerializeField] private int _playerMoney;
+    [Header("Variables")]
+    [SerializeField] private int _playerHealth = 10;
+    [SerializeField] private int _playerMoney;
 
-
-	private void Awake()
-	{
-		_playerHealth = BasePlayerHealth;
-		_playerMoney = BasePlayerMoney;
-	}
-
-	public void TakeDamage(int damage)
-	{
-		if (_playerHealth <= 0)
+    public void PlayerTakeDamage(int damage)
+    {
+        if(_playerHealth > 0)
 		{
-			Debug.Log("Player Died");
-			return;
-		}
-
+            _playerHealth -= damage;
+            Debug.Log($"Player received {damage} damage");
+            DecreaseHealth(_playerHealth);
+        }
 		else
 		{
-			Debug.Log("Player get damage");
-			_playerHealth -= damage;
-			DecreaseHealth(damage);
+            Debug.Log("Player died");
 		}
-	}
+
+    }
 }

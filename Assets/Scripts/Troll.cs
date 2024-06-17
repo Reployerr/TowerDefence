@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Troll : Enemy
 {
+    [Header("Variables")]
     [SerializeField] private float trollSpeed = 1f;
     [SerializeField] private int trollHealth = 6;
+    [SerializeField] private int trollDamage = 2;
+
+    [Header("References")]
     private Rigidbody2D trollRigidbody;
 
-    public Troll(float moveSpeed, int health) : base(moveSpeed, health) {}
-    public Troll(Rigidbody2D rb) : base(rb) {}
+    public Troll(float moveSpeed, int health, int damage) : base(moveSpeed, health, damage) { }
+    public Troll(Rigidbody2D rb) : base(rb) { }
 
     private void Awake()
     {
@@ -17,23 +21,27 @@ public class Troll : Enemy
         EnemyRigidBody = trollRigidbody;
         EnemyMoveSpeed = trollSpeed;
         EnemyHealth = trollHealth;
+        EnemyDamage = trollDamage;
+
+        Debug.Log($"Troll initialized with damage: {EnemyDamage}");
     }
+
     private void Start()
     {
         GetTargetPos();
-
+        FindingPlayer(); // »щем игрока
     }
 
     private void Update()
     {
         GetDistance();
 
-        if (trollHealth < 0)
+        if (EnemyHealth < 0)
         {
-            trollHealth = 0;
+            EnemyHealth = 0;
         }
-        if (trollHealth == 0)
-		{
+        if (EnemyHealth == 0)
+        {
             KillEnemy();
         }
     }
@@ -43,14 +51,13 @@ public class Troll : Enemy
         MoveEnemy();
     }
 
-
     public void MoveEnemy()
     {
         base.Move();
     }
 
-	public override void TakeDamage(int damage)
-	{
-        trollHealth -= damage;
+    public override void TakeDamage(int damage)
+    {
+        EnemyHealth -= damage;
     }
 }

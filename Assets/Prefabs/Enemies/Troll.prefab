@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {fileID: 0}
-  _playerScript: {fileID: 0}
-  trollSpeed: 10
+  trollSpeed: 2
   trollHealth: 10
+  trollDamage: 1
 --- !u!58 &3749958379848433674
 CircleCollider2D:
   m_ObjectHideFlags: 0

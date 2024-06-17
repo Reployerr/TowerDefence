@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 156861898}
   - component: {fileID: 156861897}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: health_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2888,31 +2888,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 826728649}
-  - component: {fileID: 826728648}
+  - component: {fileID: 826728650}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &826728648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826728647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f64dafdb3ec40b947898ba20a44425b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthText: {fileID: 0}
-  BasePlayerHealth: 10
-  _playerHealth: 0
-  BasePlayerMoney: 50
-  _playerMoney: 0
 --- !u!4 &826728649
 Transform:
   m_ObjectHideFlags: 0
@@ -2928,6 +2911,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &826728650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826728647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64dafdb3ec40b947898ba20a44425b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthText: {fileID: 156861897}
+  _playerHealth: 10
+  _playerMoney: 0
 --- !u!1001 &845367940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8031,14 +8029,14 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1459078627}
+  - {fileID: 826728649}
   - {fileID: 519420032}
   - {fileID: 1812725199}
   - {fileID: 1587721527}
-  - {fileID: 1459078627}
   - {fileID: 162899542}
   - {fileID: 653326603}
   - {fileID: 1553254769}
   - {fileID: 982197607}
   - {fileID: 1423960885}
   - {fileID: 773382698}
-  - {fileID: 826728649}

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -13,6 +11,20 @@ public abstract class Enemy : MonoBehaviour
 
     public Rigidbody2D EnemyRigidBody { get; protected set; } = null;
     public Transform targetPosition;
+
+   
+
+    public Enemy(float moveSpeed, int health, int damage)
+    {
+        EnemyMoveSpeed = moveSpeed;
+        EnemyHealth = health;
+        EnemyDamage = damage;
+    }
+
+    public Enemy(Rigidbody2D rb)
+    {
+        EnemyRigidBody = rb;
+    }
 
     public void FindingPlayer()
     {
@@ -32,18 +44,6 @@ public abstract class Enemy : MonoBehaviour
         {
             Debug.LogError("Player object not found!");
         }
-    }
-
-    public Enemy(float moveSpeed, int health, int damage)
-    {
-        EnemyMoveSpeed = moveSpeed;
-        EnemyHealth = health;
-        EnemyDamage = damage;
-    }
-
-    public Enemy(Rigidbody2D rb)
-    {
-        EnemyRigidBody = rb;
     }
 
     // TAKING DAMAGE

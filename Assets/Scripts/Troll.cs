@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Troll : Enemy
@@ -29,7 +27,7 @@ public class Troll : Enemy
     private void Start()
     {
         GetTargetPos();
-        FindingPlayer(); // »щем игрока
+        FindingPlayer();
     }
 
     private void Update()

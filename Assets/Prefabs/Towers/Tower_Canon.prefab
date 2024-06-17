@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6373850328646521079}
   - component: {fileID: 9046873207881209461}
   - component: {fileID: 2099093326128418636}
+  - component: {fileID: 6288703783516464166}
   m_Layer: 8
   m_Name: Tower_Canon
   m_TagString: Untagged
@@ -131,6 +132,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1533333, y: 1.6933334}
   m_EdgeRadius: 0
+--- !u!114 &6288703783516464166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7822859280619303622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46446e80af9bda74686f3cd7f04f520e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerName: Canon
+  cost: 100
+  prefab: {fileID: 7822859280619303622}
 --- !u!1 &8103520200932435553
 GameObject:
   m_ObjectHideFlags: 0

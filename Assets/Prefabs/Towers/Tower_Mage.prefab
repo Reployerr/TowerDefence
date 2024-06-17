@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2912964267091048818}
   - component: {fileID: 5090048509463968156}
   - component: {fileID: 5212583719096597385}
+  - component: {fileID: 3567058608993815997}
   m_Layer: 8
   m_Name: Tower_Mage
   m_TagString: Untagged
@@ -130,3 +131,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2466667, y: 3.0466666}
   m_EdgeRadius: 0
+--- !u!114 &3567058608993815997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310343824496229373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46446e80af9bda74686f3cd7f04f520e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerName: Mage
+  cost: 100
+  prefab: {fileID: 7310343824496229373}

@@ -3,12 +3,9 @@ using TMPro;
 
 public class UI_Health : MonoBehaviour
 {
-	[Header("Variables")]
 
 	[Header("Adressables")]
 	[SerializeField] private TMP_Text _healthText;
-
-	Player _playerScript;
 
 	private void Start()
 	{

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8189226142372685375}
   - component: {fileID: 1190123792466274848}
   - component: {fileID: 4171291131491243755}
+  - component: {fileID: 4909861566340332586}
   m_Layer: 8
   m_Name: Tower_Archer
   m_TagString: Untagged
@@ -153,6 +154,21 @@ MonoBehaviour:
   _attackRange: 3.8
   _rotationSpeed: 200
   _firingRate: 1
+--- !u!114 &4909861566340332586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782243286137666353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46446e80af9bda74686f3cd7f04f520e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerName: Archer
+  cost: 100
+  prefab: {fileID: 4782243286137666353}
 --- !u!1 &5800164868365781717
 GameObject:
   m_ObjectHideFlags: 0

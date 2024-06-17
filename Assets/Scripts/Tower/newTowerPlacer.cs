@@ -8,12 +8,14 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private LayerMask roadLayerMask; // Маска для определения дороги
     [SerializeField] private LayerMask towerLayerMask; // Маска для определения слоя башен
     [SerializeField] private Button[] towerButtons; // Массив кнопок для выбора башен
-    [SerializeField] private GameObject[] towerPrefabs; // Массив префабов башен
+    [SerializeField] private Tower[] towers; // Массив башен
 
     private GameObject _selectedTowerPrefab; // Выбранный префаб башни
     private GameObject _currentTower; // Текущая размещенная башня
     private Camera _mainCamera;
     private SpriteRenderer _prefabSprite;
+
+    private int playerGold = 100; // Количество золота у игрока
 
     private void Awake()
     {
@@ -39,21 +41,16 @@ public class TowerPlacement : MonoBehaviour
             // цвет башни в зависимости от типа поверхности
             if (IsMouseOverRoad(mousePosition))
             {
-               //Debug.Log("Mouse over road");
-                _prefabSprite.color = Color.red;
-                _prefabSprite.color = new Color(_prefabSprite.color.r, _prefabSprite.color.g, _prefabSprite.color.b, 0.5f);
+                _prefabSprite.color = new Color(1, 0, 0, 0.5f); // красный цвет
             }
             else if (IsMouseOverGround(mousePosition))
             {
-                //Debug.Log("Mouse over ground");
-                _prefabSprite.color = Color.green;
-                _prefabSprite.color = new Color(_prefabSprite.color.r, _prefabSprite.color.g, _prefabSprite.color.b, 0.5f);
+                _prefabSprite.color = new Color(0, 1, 0, 0.5f); // зеленый цвет
             }
 
             if (IsTowerOverlap(_currentTower))
-			{
-                _prefabSprite.color = Color.red;
-                _prefabSprite.color = new Color(_prefabSprite.color.r, _prefabSprite.color.g, _prefabSprite.color.b, 0.5f);
+            {
+                _prefabSprite.color = new Color(1, 0, 0, 0.5f); // красный цвет
             }
 
             // размещение башни
@@ -71,7 +68,7 @@ public class TowerPlacement : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))
             {
-                //убираем башню из состояния выбора
+                // убираем башню из состояния выбора
                 _selectedTowerPrefab = null;
                 if (_currentTower != null)
                 {
@@ -85,25 +82,40 @@ public class TowerPlacement : MonoBehaviour
     // Метод для выбора башни через кнопку UI
     public void SelectTower(int towerIndex)
     {
-        if (towerIndex >= 0 && towerIndex < towerPrefabs.Length)
+        if (towerIndex >= 0 && towerIndex < towers.Length)
         {
-            _selectedTowerPrefab = towerPrefabs[towerIndex];
+            Tower selectedTower = towers[towerIndex];
 
-            // Создаем новую башню, чтобы она следовала за курсором
-            if (_currentTower != null)
+            if (playerGold >= selectedTower.cost)
             {
-                Destroy(_currentTower);
+                _selectedTowerPrefab = selectedTower.prefab;
+
+                // Создаем новую башню, чтобы она следовала за курсором
+                if (_currentTower != null)
+                {
+                    Destroy(_currentTower);
+                }
+                _currentTower = Instantiate(_selectedTowerPrefab);
+
+                // получаем спрайт выбранной башни
+                _prefabSprite = _currentTower.GetComponent<SpriteRenderer>();
+                if (_prefabSprite == null)
+                {
+                    Debug.LogError("SpriteRenderer не найден на выбранной башне.");
+                    return;
+                }
+                _prefabSprite.color = new Color(_prefabSprite.color.r, _prefabSprite.color.g, _prefabSprite.color.b, 0.5f); // полупрозрачность
+
+                // Отключаем скрипт TowerShooting
+                TowerShooting towerShooting = _currentTower.GetComponent<TowerShooting>();
+                if (towerShooting != null)
+                {
+                    towerShooting.enabled = false;
+                }
             }
-            _currentTower = Instantiate(_selectedTowerPrefab);
-
-            //получаем спрайт выбранной башни
-            _prefabSprite = _currentTower.GetComponent<SpriteRenderer>();
-            
-            // Отключаем скрипт TowerShooting
-            TowerShooting towerShooting = _currentTower.GetComponent<TowerShooting>();
-            if (towerShooting != null)
+            else
             {
-                towerShooting.enabled = false;
+                Debug.Log("Не хватает золота для покупки этой башни.");
             }
         }
     }
@@ -116,6 +128,13 @@ public class TowerPlacement : MonoBehaviour
             Instantiate(_selectedTowerPrefab, position, Quaternion.identity);
             Debug.Log("Башня расположена: " + position);
 
+            // Уменьшаем количество золота игрока
+            Tower selectedTower = System.Array.Find(towers, t => t.prefab == _selectedTowerPrefab);
+            if (selectedTower != null)
+            {
+                playerGold -= selectedTower.cost;
+            }
+
             // Убираем башню из состояния выбора
             _selectedTowerPrefab = null;
             if (_currentTower != null)
@@ -126,15 +145,15 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
-	#region Рейкасты на определение типа поверхности
-	//находится ли указанная позиция на земле
-	private bool IsMouseOverGround(Vector3 position)
+    #region Рейкасты на определение типа поверхности
+    // находится ли указанная позиция на земле
+    private bool IsMouseOverGround(Vector3 position)
     {
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, Mathf.Infinity, groundLayerMask);
         return hit.collider != null;
     }
 
-    //находится ли указанная позиция на дороге
+    // находится ли указанная позиция на дороге
     private bool IsMouseOverRoad(Vector3 position)
     {
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, Mathf.Infinity, roadLayerMask);
@@ -145,7 +164,7 @@ public class TowerPlacement : MonoBehaviour
     private bool IsTowerOverlap(GameObject tower)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(tower.transform.position, 1f, towerLayerMask);
-        return colliders.Length > 1; //есть ли коллайдеры, кроме самой башни
+        return colliders.Length > 1; // есть ли коллайдеры, кроме самой башни
     }
-	#endregion
+    #endregion
 }

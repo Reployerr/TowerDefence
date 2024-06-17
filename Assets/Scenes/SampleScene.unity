@@ -869,9 +869,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1855, y: 1.1855, z: 1.1855}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 654037434}
-  - {fileID: 1674119099}
+  m_Children: []
   m_Father: {fileID: 441951692}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -930,7 +928,7 @@ GameObject:
   - component: {fileID: 200870900}
   - component: {fileID: 200870902}
   m_Layer: 0
-  m_Name: HealthPanel
+  m_Name: PlayerPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,6 +948,8 @@ RectTransform:
   m_Children:
   - {fileID: 1786304912}
   - {fileID: 156861896}
+  - {fileID: 654037434}
+  - {fileID: 1674119099}
   m_Father: {fileID: 441951692}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2381,14 +2381,14 @@ RectTransform:
   m_GameObject: {fileID: 654037433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.60224, y: 0.60224, z: 0.60224}
+  m_LocalScale: {x: 0.6022401, y: 0.6022401, z: 0.6022401}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 174313545}
+  m_Father: {fileID: 200870899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86.86206, y: 7.081665}
+  m_AnchoredPosition: {x: 116.63861, y: 7.081625}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &654037435
@@ -2923,9 +2923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64dafdb3ec40b947898ba20a44425b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthText: {fileID: 156861897}
   _playerHealth: 10
   _playerMoney: 0
+  playerUI: {fileID: 200870898}
 --- !u!1001 &845367940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5824,7 +5824,7 @@ GameObject:
   - component: {fileID: 1674119101}
   - component: {fileID: 1674119100}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: gold_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5837,16 +5837,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674119098}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 174313545}
+  m_Father: {fileID: 200870899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.1467, y: 0}
+  m_AnchoredPosition: {x: 209.64732, y: -0.000040148105}
   m_SizeDelta: {x: 128.0307, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1674119100
@@ -6266,10 +6266,10 @@ MonoBehaviour:
   - {fileID: 1202971069}
   - {fileID: 1888518948}
   - {fileID: 1696760986}
-  towerPrefabs:
-  - {fileID: 4782243286137666353, guid: a1596451d2b3e4a459828a9386610fe3, type: 3}
-  - {fileID: 7822859280619303622, guid: 587843290136e1e43ba8094e1320a1ca, type: 3}
-  - {fileID: 7310343824496229373, guid: e8709934eb64522478f6ff9a383abf66, type: 3}
+  towers:
+  - {fileID: 4909861566340332586, guid: a1596451d2b3e4a459828a9386610fe3, type: 3}
+  - {fileID: 6288703783516464166, guid: 587843290136e1e43ba8094e1320a1ca, type: 3}
+  - {fileID: 3567058608993815997, guid: e8709934eb64522478f6ff9a383abf66, type: 3}
 --- !u!1001 &1836230731
 PrefabInstance:
   m_ObjectHideFlags: 0

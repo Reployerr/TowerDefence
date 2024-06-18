@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerName: Archer
-  cost: 100
+  cost: 125
   prefab: {fileID: 4782243286137666353}
 --- !u!1 &5800164868365781717
 GameObject:

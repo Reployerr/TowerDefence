@@ -75,9 +75,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {fileID: 0}
-  trollSpeed: 2
+  trollSpeed: 0.8
   trollHealth: 10
   trollDamage: 1
+  trollWorth: 15
+  minWorth: 6
+  maxWorth: 18
+  worthIsFixed: 0
 --- !u!58 &3749958379848433674
 CircleCollider2D:
   m_ObjectHideFlags: 0

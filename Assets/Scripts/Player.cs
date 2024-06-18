@@ -42,4 +42,10 @@ public class Player : MonoBehaviour
 	{
         playerGoldUI.DecreaseGold(_playerMoney);
     }
+
+    public void GotWorth(int count)
+	{
+        _playerMoney += count;
+        playerGoldUI.InitializeGold(_playerMoney);
+    }
 }

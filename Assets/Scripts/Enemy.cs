@@ -5,6 +5,7 @@ public abstract class Enemy : MonoBehaviour
     public int EnemyHealth { get; protected set; } = 10;
     public float EnemyMoveSpeed { get; protected set; }
     public int EnemyDamage { get; protected set; } = 1;
+    public int EnemyWorth { get; set; } = Random.Range(10, 10);
 
     private int pathIndex = 0;
     protected Player player; // —сылка на игрока
@@ -14,11 +15,12 @@ public abstract class Enemy : MonoBehaviour
 
    
 
-    public Enemy(float moveSpeed, int health, int damage)
+    public Enemy(float moveSpeed, int health, int damage, int worth)
     {
         EnemyMoveSpeed = moveSpeed;
         EnemyHealth = health;
         EnemyDamage = damage;
+        EnemyWorth = worth;
     }
 
     public Enemy(Rigidbody2D rb)
@@ -30,7 +32,6 @@ public abstract class Enemy : MonoBehaviour
     {
         // Finding Player by tag
         GameObject playerObject = GameObject.FindWithTag("Player");
-
         if (playerObject != null)
         {
             player = playerObject.GetComponent<Player>();
@@ -48,6 +49,13 @@ public abstract class Enemy : MonoBehaviour
 
     // TAKING DAMAGE
     public abstract void TakeDamage(int damage);
+    public virtual void GivingWorth(int count)
+	{
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        player = playerObject.GetComponent<Player>();
+
+        player.GotWorth(count);
+    }
 
     public virtual void KillEnemy()
     {

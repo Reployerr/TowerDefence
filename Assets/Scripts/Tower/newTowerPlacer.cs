@@ -9,17 +9,18 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private LayerMask towerLayerMask; // Маска для определения слоя башен
     [SerializeField] private Button[] towerButtons; // Массив кнопок для выбора башен
     [SerializeField] private Tower[] towers; // Массив башен
+    [SerializeField] private GameObject _playerObj;
+    [SerializeField] private Player _playerScript;
 
     private GameObject _selectedTowerPrefab; // Выбранный префаб башни
     private GameObject _currentTower; // Текущая размещенная башня
     private Camera _mainCamera;
     private SpriteRenderer _prefabSprite;
 
-    private int playerGold = 100; // Количество золота у игрока
-
     private void Awake()
     {
         _mainCamera = Camera.main;
+        _playerScript = _playerObj.GetComponent<Player>();
 
         // каждой кнопке обработчик нажатия
         for (int i = 0; i < towerButtons.Length; i++)
@@ -86,7 +87,7 @@ public class TowerPlacement : MonoBehaviour
         {
             Tower selectedTower = towers[towerIndex];
 
-            if (playerGold >= selectedTower.cost)
+            if (_playerScript._playerMoney >= selectedTower.cost)
             {
                 _selectedTowerPrefab = selectedTower.prefab;
 
@@ -132,7 +133,8 @@ public class TowerPlacement : MonoBehaviour
             Tower selectedTower = System.Array.Find(towers, t => t.prefab == _selectedTowerPrefab);
             if (selectedTower != null)
             {
-                playerGold -= selectedTower.cost;
+                _playerScript._playerMoney -= selectedTower.cost;
+                _playerScript.BuyingTower();
             }
 
             // Убираем башню из состояния выбора
@@ -144,6 +146,7 @@ public class TowerPlacement : MonoBehaviour
             }
         }
     }
+
 
     #region Рейкасты на определение типа поверхности
     // находится ли указанная позиция на земле

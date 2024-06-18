@@ -3,17 +3,24 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Variables")]
-    [SerializeField] private int _playerHealth = 10;
-    [SerializeField] private int _playerMoney = 100;
+    [SerializeField] private int _playerHealth;
+    [SerializeField] public int _playerMoney;
 
+    [Header("References")]
     [SerializeField] private GameObject playerUI;
-    UI_Health playerHealthUI;
-    UI_Gold playerGoldUI;
+    [SerializeField] private UI_Health playerHealthUI;
+    [SerializeField] private UI_Gold playerGoldUI;
 
 	private void Start()
 	{
         UI_Health health = playerUI.GetComponent<UI_Health>();
         playerHealthUI = health;
+        playerHealthUI.InitializeHealth(_playerHealth);
+
+
+        UI_Gold gold = playerUI.GetComponent<UI_Gold>();
+        playerGoldUI = gold;
+        playerGoldUI.InitializeGold(_playerMoney);
     }
 
 	public void PlayerTakeDamage(int damage)
@@ -29,5 +36,10 @@ public class Player : MonoBehaviour
             Debug.Log("Player died");
 		}
 
+    }
+
+    public void BuyingTower()
+	{
+        playerGoldUI.DecreaseGold(_playerMoney);
     }
 }

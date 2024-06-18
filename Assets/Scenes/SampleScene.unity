@@ -927,6 +927,7 @@ GameObject:
   - component: {fileID: 200870901}
   - component: {fileID: 200870900}
   - component: {fileID: 200870902}
+  - component: {fileID: 200870903}
   m_Layer: 0
   m_Name: PlayerPanel
   m_TagString: Untagged
@@ -1008,6 +1009,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthText: {fileID: 156861897}
+--- !u!114 &200870903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200870898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e889a51cbaaf68409c3ad910f8cf102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goldText: {fileID: 1674119100}
 --- !u!1001 &215862390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2923,9 +2937,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64dafdb3ec40b947898ba20a44425b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: 10
-  _playerMoney: 0
+  _playerHealth: 12
+  _playerMoney: 100
   playerUI: {fileID: 200870898}
+  playerHealthUI: {fileID: 0}
+  playerGoldUI: {fileID: 0}
 --- !u!1001 &845367940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6270,6 +6286,8 @@ MonoBehaviour:
   - {fileID: 4909861566340332586, guid: a1596451d2b3e4a459828a9386610fe3, type: 3}
   - {fileID: 6288703783516464166, guid: 587843290136e1e43ba8094e1320a1ca, type: 3}
   - {fileID: 3567058608993815997, guid: e8709934eb64522478f6ff9a383abf66, type: 3}
+  _playerObj: {fileID: 826728647}
+  _playerScript: {fileID: 826728650}
 --- !u!1001 &1836230731
 PrefabInstance:
   m_ObjectHideFlags: 0

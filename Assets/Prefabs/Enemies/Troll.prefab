@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2523668251489679856}
   - component: {fileID: 4740224652600757794}
   - component: {fileID: 3749958379848433674}
+  - component: {fileID: -5101196563272938099}
   m_Layer: 9
   m_Name: Troll
   m_TagString: Untagged
@@ -78,10 +79,7 @@ MonoBehaviour:
   trollSpeed: 0.8
   trollHealth: 10
   trollDamage: 1
-  trollWorth: 15
-  minWorth: 6
-  maxWorth: 18
-  worthIsFixed: 0
+  worthScript: {fileID: 0}
 --- !u!58 &3749958379848433674
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -117,6 +115,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.04547453}
   serializedVersion: 2
   m_Radius: 0.34625244
+--- !u!114 &-5101196563272938099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186901387746869363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bf538b0ac3d3646b087c868899ee30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyWorth: 0
+  minWorth: 1
+  maxWorth: 50
+  worthIsFixed: 0
 --- !u!1 &6966584400155624645
 GameObject:
   m_ObjectHideFlags: 0

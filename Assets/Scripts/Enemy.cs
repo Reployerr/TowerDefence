@@ -5,7 +5,7 @@ public abstract class Enemy : MonoBehaviour
     public int EnemyHealth { get; protected set; } = 10;
     public float EnemyMoveSpeed { get; protected set; }
     public int EnemyDamage { get; protected set; } = 1;
-    public int EnemyWorth { get; set; } = Random.Range(10, 10);
+    public int EnemyWorth { get; set; }
 
     private int pathIndex = 0;
     protected Player player; // —сылка на игрока
@@ -49,6 +49,7 @@ public abstract class Enemy : MonoBehaviour
 
     // TAKING DAMAGE
     public abstract void TakeDamage(int damage);
+    public abstract void GetWorthValue(EnemyWorth worth);
     public virtual void GivingWorth(int count)
 	{
         GameObject playerObject = GameObject.FindWithTag("Player");

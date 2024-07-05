@@ -6,12 +6,11 @@ public class Troll : Enemy
     [SerializeField] private float trollSpeed = 1f;
     [SerializeField] private int trollHealth = 6;
     [SerializeField] private int trollDamage = 2;
+    private int trollWorth;
 
     [Header("Enemy Worth")]
-    [SerializeField] public int trollWorth;
-    [SerializeField] public float minWorth = 1;
-    [SerializeField] public float maxWorth = 50;
-    [SerializeField] public bool worthIsFixed = false;
+   // [SerializeField] public int trollWorth;
+    [SerializeField] private EnemyWorth worthScript; // его необходимо перетащить в инспекторе именно с объекта врага, не оригинал
 
     [Header("References")]
     private Rigidbody2D trollRigidbody;
@@ -21,24 +20,24 @@ public class Troll : Enemy
 
     private void Awake()
     {
-        trollWorth = Random.Range(20, 20);
+
         trollRigidbody = GetComponent<Rigidbody2D>();
+
+        EnemyWorth enemyWorthScript = GetComponent<EnemyWorth>();
+        worthScript = enemyWorthScript;
+        GetWorthValue(worthScript);
+
         EnemyRigidBody = trollRigidbody;
         EnemyMoveSpeed = trollSpeed;
         EnemyHealth = trollHealth;
         EnemyDamage = trollDamage;
+        EnemyWorth = worthScript.enemyWorth;
 
-        EnemyWorth = trollWorth;
         Debug.Log($"Troll initialized with damage: {EnemyDamage}");
     }
 
     private void Start()
     {
-		if (worthIsFixed == false)
-		{
-            trollWorth = (int)Random.Range(minWorth, maxWorth);
-        }
-
         GetTargetPos();
         FindingPlayer();
     }
@@ -74,5 +73,8 @@ public class Troll : Enemy
         EnemyHealth -= damage;
     }
 
-
+    public override void GetWorthValue(EnemyWorth worth)
+	{
+        trollWorth = worth.enemyWorth;   
+    }
 }

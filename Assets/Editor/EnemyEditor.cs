@@ -1,25 +1,26 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Troll))]
+[CustomEditor(typeof(EnemyWorth))]
 public class EnemyEditor : Editor
 {
 	public override void OnInspectorGUI()
 	{
 		base.OnInspectorGUI();
-		Troll enemy = (Troll)target;
+		EnemyWorth enemy = (EnemyWorth)target;
 
 
 		if (enemy.worthIsFixed == false)
 		{
 			enemy.minWorth = (int)EditorGUILayout.Slider("Minimum worth ", enemy.minWorth, 1f, 50f);
 			enemy.maxWorth = (int)EditorGUILayout.Slider("Maximum worth ", enemy.maxWorth, 1f, 50f);
+
 		}
 		else
 		{
-			enemy.minWorth = (int)EditorGUILayout.Slider("Minimum worth ", enemy.minWorth, enemy.trollWorth, enemy.trollWorth);
-			enemy.maxWorth = (int)EditorGUILayout.Slider("Maximum worth ", enemy.maxWorth, enemy.trollWorth, enemy.trollWorth);
-			enemy.trollWorth = 13;
+			enemy.minWorth = (int)EditorGUILayout.Slider("Minimum worth ", enemy.minWorth, enemy.enemyWorth, enemy.enemyWorth);
+			enemy.maxWorth = (int)EditorGUILayout.Slider("Maximum worth ", enemy.maxWorth, enemy.enemyWorth, enemy.enemyWorth);
+			enemy.enemyWorth = 13;
 		}
 
 		if (enemy.worthIsFixed == false && enemy.minWorth >= enemy.maxWorth)
@@ -30,4 +31,5 @@ public class EnemyEditor : Editor
 		
 		
 	}
+	
 }

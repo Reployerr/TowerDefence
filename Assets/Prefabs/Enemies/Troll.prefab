@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4bf538b0ac3d3646b087c868899ee30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyWorth: 0
-  minWorth: 1
-  maxWorth: 50
+  enemyWorth: 13
+  minWorth: 9
+  maxWorth: 15
   worthIsFixed: 0
 --- !u!1 &6966584400155624645
 GameObject:

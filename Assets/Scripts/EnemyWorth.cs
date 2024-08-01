@@ -12,11 +12,14 @@ public class EnemyWorth : MonoBehaviour
 
 	private void Awake()
 	{
+		InitializeWorth();
+	}
+
+	private void InitializeWorth()
+	{
 		if (worthIsFixed == false)
 		{
 			enemyWorth = (int)Random.Range(minWorth, maxWorth);
-		} 
+		}
 	}
-
-
 }

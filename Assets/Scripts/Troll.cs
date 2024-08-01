@@ -20,24 +20,22 @@ public class Troll : Enemy
 
     private void Awake()
     {
-
         trollRigidbody = GetComponent<Rigidbody2D>();
-
         EnemyWorth enemyWorthScript = GetComponent<EnemyWorth>();
         worthScript = enemyWorthScript;
         GetWorthValue(worthScript);
 
-        EnemyRigidBody = trollRigidbody;
-        EnemyMoveSpeed = trollSpeed;
-        EnemyHealth = trollHealth;
-        EnemyDamage = trollDamage;
-        EnemyWorth = worthScript.enemyWorth;
-
-        Debug.Log($"Troll initialized with damage: {EnemyDamage}");
     }
 
     private void Start()
     {
+        EnemyWorth = worthScript.enemyWorth;
+        EnemyRigidBody = trollRigidbody;
+        EnemyMoveSpeed = trollSpeed;
+        EnemyHealth = trollHealth;
+        EnemyDamage = trollDamage;
+
+        Debug.Log($"Troll initialized with damage: {EnemyDamage}");
         GetTargetPos();
         FindingPlayer();
     }
@@ -45,7 +43,7 @@ public class Troll : Enemy
     private void Update()
     {
         GetDistance();
-
+        
         if (EnemyHealth < 0)
         {
             EnemyHealth = 0;

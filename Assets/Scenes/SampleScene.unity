@@ -3055,6 +3055,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathFirst_LevelOne
       objectReference: {fileID: 0}
+    - target: {fileID: 9148269181574940720, guid: cc23855c30de5bc4d859062c4cc6092c, type: 3}
+      propertyPath: _currentWave
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148269181574940720, guid: cc23855c30de5bc4d859062c4cc6092c, type: 3}
+      propertyPath: _enemiesPerSecond
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148269181574940720, guid: cc23855c30de5bc4d859062c4cc6092c, type: 3}
+      propertyPath: enemiesPerSecondCap
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148269181574940720, guid: cc23855c30de5bc4d859062c4cc6092c, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148269181574940720, guid: cc23855c30de5bc4d859062c4cc6092c, type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 186901387746869363, guid: 1b1c9b3e70723264e9ee6712c5dd9fcf, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

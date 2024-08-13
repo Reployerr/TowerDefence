@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3749958379848433674}
   - component: {fileID: -5101196563272938099}
   m_Layer: 9
-  m_Name: Troll
+  m_Name: Imp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {fileID: 0}
-  trollSpeed: 0.8
-  trollHealth: 10
+  trollSpeed: 1.5
+  trollHealth: 6
   trollDamage: 1
   worthScript: {fileID: 0}
 --- !u!58 &3749958379848433674
@@ -206,7 +206,7 @@ SpriteRenderer:
   m_SortingLayerID: -1199202269
   m_SortingLayer: 5
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 65daaa5397b38ca4f9566bf185afb249, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 448db2f3ff388674289615a6c23c6879, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -249,18 +249,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015890956, y: -0.0132986605}
+  m_Offset: {x: -0.09661475, y: 0.042954087}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.09, y: 1.6}
+    oldSize: {x: 1.68, y: 1.34}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6795398, y: 1.2498341}
+  m_Size: {x: 1.1595659, y: 0.717306}
   m_EdgeRadius: 0
 --- !u!95 &5816899683029957692
 Animator:

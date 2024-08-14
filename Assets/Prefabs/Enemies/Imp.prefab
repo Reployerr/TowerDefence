@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWorth: 13
-  minWorth: 9
-  maxWorth: 15
+  minWorth: 4
+  maxWorth: 6
   worthIsFixed: 0
 --- !u!1 &6966584400155624645
 GameObject:

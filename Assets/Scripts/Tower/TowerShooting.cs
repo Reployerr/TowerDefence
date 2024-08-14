@@ -12,8 +12,9 @@ public class TowerShooting : MonoBehaviour
     [SerializeField] private Transform _towerRotationPoint; // точка вращения оружия башни (если оно есть)
     [SerializeField] private LayerMask _enemyMask; // маска врагов
     [SerializeField] private GameObject _towerBullet; // снаряд которой стреляет башня
-    [SerializeField] private Transform _shootPoint; // точка откуда стреляет башня
-    
+    [SerializeField] private Transform _shootPoint; // точка откуда стреляет башня   
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _shootSound;
 
     [Header("Attributes")]
     [SerializeField] private float _attackRange = 0f;
@@ -54,9 +55,19 @@ public class TowerShooting : MonoBehaviour
 
     }
 
+    public void ShootEnemy()
+    {
+        _audioSource.pitch = UnityEngine.Random.Range(1f, 2f);
+        _audioSource.PlayOneShot(_shootSound);
+        GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation);
+        Bullet bulletScript = bulletObj.GetComponent<Bullet>();
+        bulletScript.SetTarget(_target);
+
+    }
+
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _attackRange, (Vector2)transform.position, 0f, _enemyMask); //CircleCastAll
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _attackRange, (Vector2)transform.position, 0f, _enemyMask); 
         if (hits.Length > 0)
         {
             _target = hits[0].transform;
@@ -76,18 +87,10 @@ public class TowerShooting : MonoBehaviour
 
     private void RotateToTarget()
     {
-        float angle = Mathf.Atan2(_target.position.y - transform.position.y, _target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f; // ATAN
+        float angle = Mathf.Atan2(_target.position.y - transform.position.y, _target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         _towerRotationPoint.rotation = Quaternion.RotateTowards(_towerRotationPoint.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-    }
-
-    public void ShootEnemy()
-	{
-        GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation);
-        Bullet bulletScript = bulletObj.GetComponent<Bullet>();
-        bulletScript.SetTarget(_target);
-
     }
 
     private void OnDrawGizmosSelected()

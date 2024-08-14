@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,7 @@ public class WaveSpawner : MonoBehaviour
 {
 	[Header("References")]
 	[SerializeField] private GameObject[] enemyPrefabs;
+	[SerializeField] private TMP_Text wavesText;
 
 	[Header("Attributes")]
 	[SerializeField] private int _baseEnemies = 3; // count of enemies by default
@@ -18,6 +20,7 @@ public class WaveSpawner : MonoBehaviour
 	public static UnityEvent onEnemyDestroy = new UnityEvent();
 
 	public int _currentWave = 1;
+	public int _maxWaves = 6;
 
 	private float _timeSinceLastSpawn; // time after last enemy's wave has spawned
 	private int _enemiesAlive;
@@ -43,6 +46,7 @@ public class WaveSpawner : MonoBehaviour
 
 		if(_timeSinceLastSpawn >= (1f / eps) && _enemiesLeftToSpawn > 0)
 		{
+
 			SpawnEnemy();
 			_enemiesLeftToSpawn--;
 			_enemiesAlive++;
@@ -64,7 +68,7 @@ public class WaveSpawner : MonoBehaviour
 	private IEnumerator StartWave()
 	{
 		yield return new WaitForSeconds(_timeBetweenWaves);
-
+		wavesText.text = "ÂÎËÍÀ " + _currentWave + "/" + _maxWaves;
 		isSpawning = true;
 		_enemiesLeftToSpawn = EnemiesPerWave();
 		eps = EnemiesPerSecond();

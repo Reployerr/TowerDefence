@@ -10,12 +10,15 @@ public class Bullet : MonoBehaviour
 	[Header("Attributes")]
 	[SerializeField] private float _bulletSpeed = 2f;
 	[SerializeField] private int _bulletDamage = 2;
+	[SerializeField] private float _bulletLifetime = 2f;
 
 	private Transform _enemy;
 	//private GameObject _enemyObj;
 
 	private void Start()
 	{
+		Destroy(this.gameObject, 2f);
+		
 	}
 	public void SetTarget(Transform target)
 	{
@@ -40,4 +43,5 @@ public class Bullet : MonoBehaviour
 			Destroy(gameObject);
 		}	
 	}
+
 }

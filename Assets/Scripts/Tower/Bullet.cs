@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 
 	private void Start()
 	{
-		Destroy(this.gameObject, 2f);
+		Destroy(this.gameObject, _bulletLifetime);
 		
 	}
 	public void SetTarget(Transform target)

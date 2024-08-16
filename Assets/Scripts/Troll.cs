@@ -14,6 +14,7 @@ public class Troll : Enemy
 
     [Header("References")]
     private Rigidbody2D trollRigidbody;
+    [SerializeField] private GameObject bloodEffect;
 
     public Troll(float moveSpeed, int health, int damage, int worth) : base(moveSpeed, health, damage, worth) { }
     public Troll(Rigidbody2D rb) : base(rb) { }
@@ -69,6 +70,7 @@ public class Troll : Enemy
     public override void TakeDamage(int damage)
     {
         EnemyHealth -= damage;
+        Instantiate(bloodEffect, transform.position, Quaternion.identity);
     }
 
     public override void GetWorthValue(EnemyWorth worth)

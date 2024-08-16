@@ -80,6 +80,7 @@ MonoBehaviour:
   trollHealth: 6
   trollDamage: 1
   worthScript: {fileID: 0}
+  bloodEffect: {fileID: 2198109912229628374, guid: 59f8520a4fac96c449798c9f1461028c, type: 3}
 --- !u!58 &3749958379848433674
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -270,9 +271,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6966584400155624645}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 37465f2aeb9d2bd4d9dd4b1e075a1895, type: 2}
+  m_Controller: {fileID: 9100000, guid: 77e5ad2cc4afacc449df33a76bf74631, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

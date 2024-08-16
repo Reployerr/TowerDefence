@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 186901387746869363}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.29, y: 5.9031, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.7265036, y: 1.7265036, z: 1.7265036}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -80,6 +80,7 @@ MonoBehaviour:
   trollHealth: 10
   trollDamage: 1
   worthScript: {fileID: 0}
+  bloodEffect: {fileID: 4741984251381292413, guid: bbb82953f44825244943efd45c9c496d, type: 3}
 --- !u!58 &3749958379848433674
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -270,9 +271,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6966584400155624645}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 37465f2aeb9d2bd4d9dd4b1e075a1895, type: 2}
+  m_Controller: {fileID: 9100000, guid: b2dc5600a34038d4f8a7d06daaeaa9d1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

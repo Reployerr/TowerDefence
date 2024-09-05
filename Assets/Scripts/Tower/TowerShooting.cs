@@ -9,10 +9,10 @@ public class TowerShooting : MonoBehaviour
     private Transform _startingRotation;
 
     [Header("References")]
-    [SerializeField] private Transform _towerRotationPoint; // точка вращения оружия башни (если оно есть)
-    [SerializeField] private LayerMask _enemyMask; // маска врагов
-    [SerializeField] private GameObject _towerBullet; // снаряд которой стреляет башня
-    [SerializeField] private Transform _shootPoint; // точка откуда стреляет башня   
+    [SerializeField] private Transform _towerRotationPoint; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ)
+    [SerializeField] private LayerMask _enemyMask; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private GameObject _towerBullet; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private Transform _shootPoint; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ   
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _shootSound;
 
@@ -75,7 +75,7 @@ public class TowerShooting : MonoBehaviour
         if(hits.Length <= 0)
         {
             Quaternion defaultRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-            _towerRotationPoint.rotation = Quaternion.RotateTowards(_towerRotationPoint.rotation, defaultRotation, 200f /*скорость поворота*/ * Time.deltaTime);
+            _towerRotationPoint.rotation = Quaternion.RotateTowards(_towerRotationPoint.rotation, defaultRotation, 200f /*пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ*/ * Time.deltaTime);
         }
         
     }
@@ -95,7 +95,7 @@ public class TowerShooting : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, _attackRange);
+       /* Handles.color = Color.cyan;
+        Handles.DrawWireDisc(transform.position, transform.forward, _attackRange);*/
     }
 }

@@ -20,7 +20,7 @@ public class OpenCloseShop : MonoBehaviour
 
     public void PressingButton()
 	{
-        FirstpressCheck = true;
+        FirstpressCheck = !FirstpressCheck;
 
         pressCheck = !pressCheck;
 

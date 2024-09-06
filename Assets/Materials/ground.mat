@@ -53,14 +53,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CloudsDensity: 0.497
-    - _CloudsSize: 6.8
+    - _CloudsDensity: 0.768
+    - _CloudsSize: 0.24
+    - _CloudsSpeed: 3
+    - _CloudsStregth: 1
     - _CloudsStrength: 0.869
     - _EnableExternalAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: -1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CloudsDirection: {r: 1, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.2}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -56,11 +56,11 @@ TagManager:
   - name: Grass
     uniqueID: 3948874553
     locked: 0
-  - name: BuildingsBG
-    uniqueID: 1808877963
-    locked: 0
   - name: TreesBG
     uniqueID: 1242673929
+    locked: 0
+  - name: BuildingsBG
+    uniqueID: 1808877963
     locked: 0
   - name: BuildingsFG
     uniqueID: 3095765027
@@ -68,11 +68,17 @@ TagManager:
   - name: Animals
     uniqueID: 1557363013
     locked: 0
+  - name: Towers
+    uniqueID: 834109317
+    locked: 0
   - name: TreesFG
     uniqueID: 1461788777
     locked: 0
-  - name: Towers
-    uniqueID: 834109317
+  - name: BuildingFG2
+    uniqueID: 2524853199
+    locked: 0
+  - name: TreesFG2
+    uniqueID: 490171399
     locked: 0
   - name: ProjectTiles
     uniqueID: 3450640057

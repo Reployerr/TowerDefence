@@ -166,7 +166,7 @@ public class TowerPlacement : MonoBehaviour
     // пересечение с другими башнями
     private bool IsTowerOverlap(GameObject tower)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(tower.transform.position, 1f, towerLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(tower.transform.position, 0.5f, towerLayerMask);
         return colliders.Length > 1; // есть ли коллайдеры, кроме самой башни
     }
     #endregion

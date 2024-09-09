@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Troll : Enemy
@@ -71,10 +72,12 @@ public class Troll : Enemy
     {
         EnemyHealth -= damage;
         Instantiate(bloodEffect, transform.position, Quaternion.identity);
+
     }
 
     public override void GetWorthValue(EnemyWorth worth)
 	{
         trollWorth = worth.enemyWorth;   
     }
+
 }

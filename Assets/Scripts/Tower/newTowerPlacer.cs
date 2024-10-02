@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TowerPlacement : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class TowerPlacement : MonoBehaviour
     private GameObject _currentTower; // Текущая размещенная башня
     private Camera _mainCamera;
     private SpriteRenderer _prefabSprite;
+    public GameObject upgradeMenu;
+    public GameObject selectedUpgradePoint;
 
     private void Awake()
     {
@@ -32,7 +35,38 @@ public class TowerPlacement : MonoBehaviour
 
     private void Update()
     {
-        if (_currentTower != null)
+		#region UpgradeSellMenu
+
+		if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero);
+			if (!EventSystem.current.IsPointerOverGameObject())
+			{
+                if (hit != false)
+                {
+                    selectedUpgradePoint = hit.transform.gameObject;
+                    if (selectedUpgradePoint.tag == "Tower")
+                    {
+                        Debug.Log("tag is tower");
+                        upgradeMenu.SetActive(true);
+                        upgradeMenu.transform.position = Camera.main.WorldToScreenPoint(selectedUpgradePoint.transform.position);
+                    }
+                    else if (selectedUpgradePoint.tag == "Ground")
+                    {
+                        upgradeMenu.SetActive(false);
+                    }
+                }
+                else if (upgradeMenu.activeInHierarchy)
+                {
+                    upgradeMenu.SetActive(false);
+                }
+            }   
+
+        }
+		#endregion
+
+		if (_currentTower != null)
         {
             // Перемещаем выбранную башню за курсором мыши
             Vector3 mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -78,6 +112,16 @@ public class TowerPlacement : MonoBehaviour
                 }
             }
         }
+
+
+    }
+    public void SellTower()
+    {
+        Debug.Log("sellClicked");
+        Tower selectedTower = selectedUpgradePoint.GetComponent<Tower>();
+        _playerScript.GotWorth(selectedTower.cost);
+        upgradeMenu.SetActive(false);
+        Destroy(selectedUpgradePoint.gameObject);
     }
 
     // Метод для выбора башни через кнопку UI
@@ -146,7 +190,7 @@ public class TowerPlacement : MonoBehaviour
             }
         }
     }
-
+   
 
     #region Рейкасты на определение типа поверхности
     // находится ли указанная позиция на земле

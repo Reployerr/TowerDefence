@@ -23644,6 +23644,8 @@ MonoBehaviour:
   - {fileID: 3567058608993815997, guid: e8709934eb64522478f6ff9a383abf66, type: 3}
   _playerObj: {fileID: 826728647}
   _playerScript: {fileID: 826728650}
+  upgradeMenu: {fileID: 8345742310809700339}
+  selectedUpgradePoint: {fileID: 0}
 --- !u!4 &1833559960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 275649764064280355, guid: fb7c955c41baf2540a192bebd1366b7c, type: 3}
@@ -26482,7 +26484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410123341031319864}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1a21b466827c7a47937e5751423316e, type: 3}
   m_Name: 
@@ -26714,7 +26716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2768277127443183075, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314227546755238702, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
       propertyPath: m_Pivot.x
@@ -26795,6 +26797,34 @@ PrefabInstance:
     - target: {fileID: 7314227546755238702, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670465189245695691, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670465189245695691, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670465189245695691, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1812725200}
+    - target: {fileID: 7670465189245695691, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670465189245695691, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SellTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670465189245695691, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerPlacement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670465189245695691, guid: 3a481e42c08b6dc41b62428dd214a4d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

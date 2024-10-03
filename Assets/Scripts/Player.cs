@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
         playerGoldUI.DecreaseGold(_playerMoney);
     }
 
+    public void UpgradingTower(int cost)
+	{
+        _playerMoney -= cost;
+        playerGoldUI.DecreaseGold(_playerMoney);
+    }
     public void GotWorth(int count)
 	{
         _playerMoney += count;

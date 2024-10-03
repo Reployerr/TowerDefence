@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 513265641857532169}
   - component: {fileID: 5212908769226785469}
   m_Layer: 10
-  m_Name: bullet_Sphere
+  m_Name: bullet_SphereLVL2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_SortingLayer: 13
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 7052c8b58ff28ed4eaaf32c5f5b15765, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.36561054, b: 0.3719637, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

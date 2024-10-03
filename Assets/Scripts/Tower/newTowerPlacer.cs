@@ -12,13 +12,19 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private Tower[] towers; // Массив башен
     [SerializeField] private GameObject _playerObj;
     [SerializeField] private Player _playerScript;
+    [SerializeField] private AudioSource _coinAudioSource;
+    [SerializeField] private AudioClip _coinAudioClip;
+   // [SerializeField] private TowersUpgrades.TypesOfNextUpgrades type = TowersUpgrades.TypesOfNextUpgrades.none;
 
+    public GameObject upgradeMenu;//меню с улучшением и продажей башни
+    public GameObject selectedUpgradePoint;//выбор башни для спавна меню с улучшением и продажей
+    public GameObject selectedTowerToUpgrade; //башня для улучшения
     private GameObject _selectedTowerPrefab; // Выбранный префаб башни
     private GameObject _currentTower; // Текущая размещенная башня
     private Camera _mainCamera;
     private SpriteRenderer _prefabSprite;
-    public GameObject upgradeMenu;
-    public GameObject selectedUpgradePoint;
+    
+
 
     private void Awake()
     {
@@ -37,7 +43,7 @@ public class TowerPlacement : MonoBehaviour
     {
 		#region UpgradeSellMenu
 
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(1))
         {
             Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero);
@@ -70,7 +76,7 @@ public class TowerPlacement : MonoBehaviour
         {
             // Перемещаем выбранную башню за курсором мыши
             Vector3 mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0f;
+            mousePosition.z = -3f;
             _currentTower.transform.position = mousePosition;
 
             // цвет башни в зависимости от типа поверхности
@@ -115,6 +121,51 @@ public class TowerPlacement : MonoBehaviour
 
 
     }
+
+    public void UpgradeTower()
+	{
+        
+        Debug.Log("upgradeClicked");
+        Tower selectedTower = selectedUpgradePoint.GetComponent<Tower>();
+        TowersUpgrades.TypesOfNextUpgrades upgradeTower = selectedTower.GetComponent<TowersUpgrades.TypesOfNextUpgrades>();
+        TowersUpgrades Upgrading = selectedTower.GetComponent<TowersUpgrades>();
+
+        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.ArcherLVL2)
+		{
+            _playerScript.UpgradingTower(Upgrading.UpgradeCost);
+            Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);
+            Destroy(selectedUpgradePoint.gameObject);
+            Debug.Log("Archers Upgraded to lvl 2");
+        }
+        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.CanonLVL2)
+        {
+            ///
+		}
+        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.MageLVL2)
+        {
+            ///
+		}
+
+
+
+        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.ArcherLVL2)
+        {
+            ///
+		}
+        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.CanonLVL2)
+        {
+            ///
+		}
+        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.MageLVL2)
+        {
+            ///
+		}
+        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.ArcherLVL2)
+        {
+            ///
+		}
+        // 
+    }
     public void SellTower()
     {
         Debug.Log("sellClicked");
@@ -122,6 +173,8 @@ public class TowerPlacement : MonoBehaviour
         _playerScript.GotWorth(selectedTower.cost);
         upgradeMenu.SetActive(false);
         Destroy(selectedUpgradePoint.gameObject);
+        _coinAudioSource.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        _coinAudioSource.PlayOneShot(_coinAudioClip);
     }
 
     // Метод для выбора башни через кнопку UI

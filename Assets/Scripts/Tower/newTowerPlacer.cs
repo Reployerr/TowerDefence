@@ -14,6 +14,7 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private Player _playerScript;
     [SerializeField] private AudioSource _coinAudioSource;
     [SerializeField] private AudioClip _coinAudioClip;
+
    // [SerializeField] private TowersUpgrades.TypesOfNextUpgrades type = TowersUpgrades.TypesOfNextUpgrades.none;
 
     public GameObject upgradeMenu;//меню с улучшением и продажей башни
@@ -124,47 +125,49 @@ public class TowerPlacement : MonoBehaviour
 
     public void UpgradeTower()
 	{
-        
+
         Debug.Log("upgradeClicked");
+
         Tower selectedTower = selectedUpgradePoint.GetComponent<Tower>();
-        TowersUpgrades.TypesOfNextUpgrades upgradeTower = selectedTower.GetComponent<TowersUpgrades.TypesOfNextUpgrades>();
-        TowersUpgrades Upgrading = selectedTower.GetComponent<TowersUpgrades>();
+        TowersUpgrades upgrading = selectedUpgradePoint.GetComponent<TowersUpgrades>(); 
 
-        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.ArcherLVL2)
-		{
-            _playerScript.UpgradingTower(Upgrading.UpgradeCost);
-            Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);
-            Destroy(selectedUpgradePoint.gameObject);
-            Debug.Log("Archers Upgraded to lvl 2");
+        if (upgrading != null) 
+        {
+            TypesOfNextUpgrades upgradeType = upgrading.upgradeType; //тип улучшения
+
+            // Теперь проверяем тип улучшения
+            if (upgradeType == TypesOfNextUpgrades.ArcherLVL2)
+            {
+                Debug.Log("ArcherLVL2 selected for upgrade");
+                _playerScript.UpgradingTower(upgrading.UpgradeCost); 
+                Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);//спавн новой башни
+                Destroy(selectedUpgradePoint.gameObject); // удаление старой башни
+                Debug.Log("Archer upgraded to lvl 2");
+            }
+            else if (upgradeType == TypesOfNextUpgrades.CanonLVL2)
+            {
+                _playerScript.UpgradingTower(upgrading.UpgradeCost);
+                Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);//спавн новой башни
+                Destroy(selectedUpgradePoint.gameObject); // удаление старой башни
+
+            }
+            else if (upgradeType == TypesOfNextUpgrades.MageLVL2)
+            {
+                _playerScript.UpgradingTower(upgrading.UpgradeCost);
+                Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);//спавн новой башни
+                Destroy(selectedUpgradePoint.gameObject); // удаление старой башни
+            }
+            else
+            {
+                Debug.Log("не выбрано улучшение");
+            }
         }
-        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.CanonLVL2)
+        else
         {
-            ///
-		}
-        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.MageLVL2)
-        {
-            ///
-		}
+            Debug.LogError("не найден скрипт TowersUpgrades на объекте");
+        }
 
 
-
-        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.ArcherLVL2)
-        {
-            ///
-		}
-        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.CanonLVL2)
-        {
-            ///
-		}
-        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.MageLVL2)
-        {
-            ///
-		}
-        if (upgradeTower == TowersUpgrades.TypesOfNextUpgrades.ArcherLVL2)
-        {
-            ///
-		}
-        // 
     }
     public void SellTower()
     {

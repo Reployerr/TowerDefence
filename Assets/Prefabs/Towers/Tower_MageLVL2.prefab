@@ -297,6 +297,7 @@ MonoBehaviour:
   towerName: Mage
   cost: 100
   prefab: {fileID: 7310343824496229373}
+  NextUpdates: []
 --- !u!114 &7445013706867577418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +314,7 @@ MonoBehaviour:
   _enemyMask:
     serializedVersion: 2
     m_Bits: 512
-  _towerBullet: {fileID: 304663640568369321, guid: 6a0c26e7b4fb97d4d9aea4cec687bccb, type: 3}
+  _towerBullet: {fileID: 304663640568369321, guid: 3384e8f35a5596c4dbef75f94afaa28c, type: 3}
   _shootPoint: {fileID: 5830182992545626235}
   _audioSource: {fileID: 7648657933151712392}
   _shootSound: {fileID: 8300000, guid: 58af4307f89b5de408bef1cd2c7c8d99, type: 3}

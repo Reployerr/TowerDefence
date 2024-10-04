@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2690156312146047244}
   - component: {fileID: 578088279683759940}
   - component: {fileID: 3481397226039761475}
-  - component: {fileID: 2144499636866063988}
+  - component: {fileID: 294316420328713671}
   m_Layer: 8
   m_Name: Tower_Archer
   m_TagString: Tower
@@ -317,7 +317,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.37}
   m_EdgeRadius: 0
---- !u!114 &2144499636866063988
+--- !u!114 &294316420328713671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,8 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36dd4fb4598b3b346be5db44ffa212c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeCost: 120
-  typesOfNextUpgrades: 1
+  UpgradeCost: 100
+  upgradeType: 1
 --- !u!1 &3572938816196446175
 GameObject:
   m_ObjectHideFlags: 0

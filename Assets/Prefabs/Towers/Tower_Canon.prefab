@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 6288703783516464166}
   - component: {fileID: -1678773812511235412}
   - component: {fileID: 2658319877876219553}
+  - component: {fileID: -2691553889070543179}
   m_Layer: 8
   m_Name: Tower_Canon
   m_TagString: Tower
@@ -213,6 +214,8 @@ MonoBehaviour:
   towerName: Canon
   cost: 125
   prefab: {fileID: 7822859280619303622}
+  NextUpdates:
+  - {fileID: 7822859280619303622, guid: 677075f715bbcc7469c09a8ab54e82cf, type: 3}
 --- !u!114 &-1678773812511235412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +335,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2691553889070543179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7822859280619303622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36dd4fb4598b3b346be5db44ffa212c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeCost: 150
+  upgradeType: 4
 --- !u!1 &8103520200932435553
 GameObject:
   m_ObjectHideFlags: 0

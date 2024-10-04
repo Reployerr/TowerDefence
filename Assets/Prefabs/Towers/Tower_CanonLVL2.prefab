@@ -213,6 +213,7 @@ MonoBehaviour:
   towerName: Canon
   cost: 125
   prefab: {fileID: 7822859280619303622}
+  NextUpdates: []
 --- !u!114 &-1678773812511235412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +230,7 @@ MonoBehaviour:
   _enemyMask:
     serializedVersion: 2
     m_Bits: 512
-  _towerBullet: {fileID: 2867641640787728371, guid: 7d3c06940c6ea444f89998cd5c49d1ed, type: 3}
+  _towerBullet: {fileID: 2867641640787728371, guid: e6c920a1b0baed646a62bf9f0c2fcf7b, type: 3}
   _shootPoint: {fileID: 885284744318276510}
   _audioSource: {fileID: 2658319877876219553}
   _shootSound: {fileID: 8300000, guid: 5557df80fe437cb4aaed0a75edfbddfd, type: 3}

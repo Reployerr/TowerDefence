@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 3567058608993815997}
   - component: {fileID: 7445013706867577418}
   - component: {fileID: 7648657933151712392}
+  - component: {fileID: 7247857774586943692}
   m_Layer: 8
   m_Name: Tower_Mage
   m_TagString: Tower
@@ -297,6 +298,8 @@ MonoBehaviour:
   towerName: Mage
   cost: 100
   prefab: {fileID: 7310343824496229373}
+  NextUpdates:
+  - {fileID: 7310343824496229373, guid: 87d4c2090ca9ac34687233f61e9731d9, type: 3}
 --- !u!114 &7445013706867577418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,3 +419,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7247857774586943692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310343824496229373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36dd4fb4598b3b346be5db44ffa212c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeCost: 180
+  upgradeType: 7

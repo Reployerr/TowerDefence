@@ -151,7 +151,7 @@ MonoBehaviour:
   _enemyMask:
     serializedVersion: 2
     m_Bits: 512
-  _towerBullet: {fileID: 5819171185637651769, guid: f2876aad17a027d44b67b7c0f862ea84, type: 3}
+  _towerBullet: {fileID: 5819171185637651769, guid: 7f9d07f78067df549bc78eae973c7258, type: 3}
   _shootPoint: {fileID: 6506518535706032267}
   _audioSource: {fileID: 578088279683759940}
   _shootSound: {fileID: 8300000, guid: 92aa390722856314787cc29badd0cb2a, type: 3}
@@ -173,6 +173,7 @@ MonoBehaviour:
   towerName: Archer
   cost: 70
   prefab: {fileID: 1882584235060264164}
+  NextUpdates: []
 --- !u!82 &578088279683759940
 AudioSource:
   m_ObjectHideFlags: 0

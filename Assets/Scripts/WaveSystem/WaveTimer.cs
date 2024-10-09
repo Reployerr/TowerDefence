@@ -12,11 +12,20 @@ public class WaveTimer : MonoBehaviour
     [SerializeField] private Button startWaveButton;   // Кнопка для мгновенного старта волны
     [SerializeField] private TMP_Text timerText;       // Текст для отображения оставшегося времени
 
+    [SerializeField] public bool isFirstWave;
     private float _timeBetweenWaves;
     private float _currentTime;
 
     private void Start()
     {
+        if(waveSpawner._currentWave == 1)
+		{
+            isFirstWave = true;
+        }
+		else
+		{
+            isFirstWave = false;
+        }
         // Получаем время между волнами из скрипта WaveSpawner
         _timeBetweenWaves = waveSpawner.GetTimeBetweenWaves();
         // Назначаем кнопку для мгновенного запуска волны
@@ -27,6 +36,7 @@ public class WaveTimer : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("isFirstWave of Wave Timer = " + isFirstWave);
         // Уменьшаем текущее время, если таймер активен
         if (_currentTime > 0)
         {
@@ -60,7 +70,13 @@ public class WaveTimer : MonoBehaviour
     // Принудительный старт следующей волны
     private void StartNextWaveNow()
     {
-        if (_currentTime > 0)
+		if (isFirstWave == true)
+		{
+            isFirstWave = false;
+            waveSpawner.ForceStartNextWave(true);
+            HideTimer();
+        }
+        else if (_currentTime > 0)
         {
             _currentTime = 0;                  // Сбрасываем таймер
             waveSpawner.ForceStartNextWave();  // Принудительно запускаем волну
@@ -69,7 +85,7 @@ public class WaveTimer : MonoBehaviour
     }
 
     // Показываем таймер
-    private void ShowTimer()
+    public void ShowTimer()
     {
         Timer.gameObject.SetActive(true);
         /*timerCircle.gameObject.SetActive(true);

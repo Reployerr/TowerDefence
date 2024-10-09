@@ -37,7 +37,7 @@ public class Troll : Enemy
         EnemyHealth = trollHealth;
         EnemyDamage = trollDamage;
 
-        Debug.Log($"Troll initialized with damage: {EnemyDamage}");
+        //Debug.Log($"Troll initialized with damage: {EnemyDamage}");
         GetTargetPos();
         FindingPlayer();
     }
@@ -54,7 +54,7 @@ public class Troll : Enemy
         {
             KillEnemy();
             GivingWorth(EnemyWorth);
-            Debug.Log($"Enemy died and give a {EnemyWorth} coins");
+            //Debug.Log($"Enemy died and give a {EnemyWorth} coins");
         }
     }
 

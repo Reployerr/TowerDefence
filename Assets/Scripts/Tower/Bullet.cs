@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
 		if(collision.gameObject.TryGetComponent(out Enemy enemy))
 		{
 			enemy.TakeDamage(_bulletDamage);
-			Debug.Log("enemy hitted");
+			//Debug.Log("enemy hitted");
 			Destroy(gameObject);
 		}	
 	}

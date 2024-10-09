@@ -75,6 +75,7 @@ public class TowerPlacement : MonoBehaviour
 
 		if (_currentTower != null)
         {
+            upgradeMenu.SetActive(false);
             // Перемещаем выбранную башню за курсором мыши
             Vector3 mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = -3f;
@@ -122,7 +123,7 @@ public class TowerPlacement : MonoBehaviour
 
 
     }
-
+    
     public void UpgradeTower()
 	{
 
@@ -138,24 +139,17 @@ public class TowerPlacement : MonoBehaviour
             // Теперь проверяем тип улучшения
             if (upgradeType == TypesOfNextUpgrades.ArcherLVL2)
             {
-                Debug.Log("ArcherLVL2 selected for upgrade");
-                _playerScript.UpgradingTower(upgrading.UpgradeCost); 
-                Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);//спавн новой башни
-                Destroy(selectedUpgradePoint.gameObject); // удаление старой башни
-                Debug.Log("Archer upgraded to lvl 2");
+                SpawnUpgradedTower(selectedTower, upgrading);
+                //Debug.Log("Archer upgraded to lvl 2");
             }
             else if (upgradeType == TypesOfNextUpgrades.CanonLVL2)
             {
-                _playerScript.UpgradingTower(upgrading.UpgradeCost);
-                Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);//спавн новой башни
-                Destroy(selectedUpgradePoint.gameObject); // удаление старой башни
+                SpawnUpgradedTower(selectedTower, upgrading);
 
             }
             else if (upgradeType == TypesOfNextUpgrades.MageLVL2)
             {
-                _playerScript.UpgradingTower(upgrading.UpgradeCost);
-                Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);//спавн новой башни
-                Destroy(selectedUpgradePoint.gameObject); // удаление старой башни
+                SpawnUpgradedTower(selectedTower, upgrading);
             }
             else
             {
@@ -169,6 +163,16 @@ public class TowerPlacement : MonoBehaviour
 
 
     }
+
+    public void SpawnUpgradedTower(Tower selectedTower, TowersUpgrades upgrading)
+    {
+        Debug.Log("ArcherLVL2 selected for upgrade");
+        _playerScript.UpgradingTower(upgrading.UpgradeCost);
+        Instantiate(selectedTower.NextUpdates[0], selectedUpgradePoint.transform.position, Quaternion.identity);//спавн новой башни
+        Destroy(selectedUpgradePoint.gameObject); // удаление старой башни
+        upgradeMenu.SetActive(false);
+    }
+
     public void SellTower()
     {
         Debug.Log("sellClicked");

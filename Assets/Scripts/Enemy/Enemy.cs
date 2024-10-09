@@ -60,7 +60,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void KillEnemy()
     {
-        Debug.Log("Enemy died");
+        //Debug.Log("Enemy died");
         WaveSpawner.onEnemyDestroy.Invoke();
         Destroy(this.gameObject);
     }

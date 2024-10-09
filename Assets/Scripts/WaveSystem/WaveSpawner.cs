@@ -17,6 +17,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float _baseTimeBetweenWaves = 10f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesPerSecondCap = 15f;
+    
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
@@ -29,6 +30,7 @@ public class WaveSpawner : MonoBehaviour
     private int _enemiesLeftToSpawn;
     private bool isSpawning;
     private float eps; // Enemies per second
+    private bool isFirstWave = true;
 
     private void Awake()
     {
@@ -37,15 +39,19 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(StartWave());
+        //StartCoroutine(StartWave());
+        waveTimer.ShowTimer();
+        _timeBetweenWaves = _baseTimeBetweenWaves;
     }
 
     private void Update()
     {
+        Debug.Log("isFirstWave of WaveSpawner = " + isFirstWave);
         if (!isSpawning) return;
 
         _timeSinceLastSpawn += Time.deltaTime;
-
+       
+        
         if (_timeSinceLastSpawn >= (1f / eps) && _enemiesLeftToSpawn > 0)
         {
             SpawnEnemy();
@@ -67,16 +73,19 @@ public class WaveSpawner : MonoBehaviour
 
     private IEnumerator StartWave()
     {
+		if (isFirstWave == false)
+		{
+            yield return new WaitForSeconds(_timeBetweenWaves);
+        }
         // Запускаем таймер для новой волны
-        waveTimer.StartNewWaveTimer();
-
-        yield return new WaitForSeconds(_timeBetweenWaves);
+       // waveTimer.StartNewWaveTimer();
 
         wavesText.text = "ВОЛНА " + _currentWave + "/" + _maxWaves;
         isSpawning = true;
         _enemiesLeftToSpawn = EnemiesPerWave();
         eps = EnemiesPerSecond();
         _timeBetweenWaves = _baseTimeBetweenWaves;
+
     }
 
     private void EndWave()
@@ -88,6 +97,8 @@ public class WaveSpawner : MonoBehaviour
         // Запуск новой волны после окончания предыдущей
         if (_currentWave <= _maxWaves)
         {
+            waveTimer.StartNewWaveTimer();
+            _timeBetweenWaves = _baseTimeBetweenWaves;
             StartCoroutine(StartWave());
         }
         else
@@ -97,10 +108,22 @@ public class WaveSpawner : MonoBehaviour
     }
 
     // Принудительный запуск новой волны
-    public void ForceStartNextWave()
+    public void ForceStartNextWave(bool isFirstWaveOverride = false)
     {
-        _timeBetweenWaves = 0;
-        StartCoroutine(StartWave());
+        isFirstWave = isFirstWaveOverride;
+        if((_currentWave == 1) && (isFirstWaveOverride))
+		{
+            _timeBetweenWaves = 0;
+            StartCoroutine(StartWave());
+            waveTimer.isFirstWave = false;
+           isFirstWave = false;
+        }
+        else
+		{
+            _timeBetweenWaves = 0;
+            StartCoroutine(StartWave());
+        }
+        
     }
 
     private void SpawnEnemy()

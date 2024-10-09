@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class TowerPlacement : MonoBehaviour
 {
+    [Header("Attributes")]
+    [SerializeField] private float upgradePanelHideTime;
+
     [Header("References")]
     [SerializeField] private LayerMask groundLayerMask; // ћаска дл€ определени€ земли
     [SerializeField] private LayerMask roadLayerMask; // ћаска дл€ определени€ дороги
@@ -14,6 +18,8 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private Player _playerScript;
     [SerializeField] private AudioSource _coinAudioSource;
     [SerializeField] private AudioClip _coinAudioClip;
+    [SerializeField] private Animator _upgradeMenuAnimator;
+    [SerializeField] private Animator _towerAnimator;
 
    // [SerializeField] private TowersUpgrades.TypesOfNextUpgrades type = TowersUpgrades.TypesOfNextUpgrades.none;
 
@@ -55,13 +61,19 @@ public class TowerPlacement : MonoBehaviour
                     selectedUpgradePoint = hit.transform.gameObject;
                     if (selectedUpgradePoint.tag == "Tower")
                     {
+                        Animator towerAnimator = selectedUpgradePoint.GetComponent<Animator>();
+                        _towerAnimator = towerAnimator;
+                        _towerAnimator.Play("Selected");
+
                         Debug.Log("tag is tower");
-                        upgradeMenu.SetActive(true);
+
+                        ShowPanel();
                         upgradeMenu.transform.position = Camera.main.WorldToScreenPoint(selectedUpgradePoint.transform.position);
                     }
                     else if (selectedUpgradePoint.tag == "Ground")
                     {
-                        upgradeMenu.SetActive(false);
+                        _towerAnimator.Play("Idle");
+                        HidePanel();  
                     }
                 }
                 else if (upgradeMenu.activeInHierarchy)
@@ -71,9 +83,10 @@ public class TowerPlacement : MonoBehaviour
             }   
 
         }
-		#endregion
+        #endregion
+      
 
-		if (_currentTower != null)
+        if (_currentTower != null)
         {
             upgradeMenu.SetActive(false);
             // ѕеремещаем выбранную башню за курсором мыши
@@ -123,7 +136,24 @@ public class TowerPlacement : MonoBehaviour
 
 
     }
-    
+    private void ShowPanel()
+	{
+        upgradeMenu.SetActive(true);
+       // _upgradeMenuAnimator.SetBool("isShow", false);
+        _upgradeMenuAnimator.Play("UpgradeMenuShow");
+    }
+    private void HidePanel()
+    {
+        //_upgradeMenuAnimator.SetBool("isShow", false);
+        _upgradeMenuAnimator.Play("UpgradeMenuHide");
+        StartCoroutine(ExecuteAfterTime(upgradePanelHideTime)); // отключить меню с задержкой upgradePanelHideTime
+
+    }
+    IEnumerator ExecuteAfterTime(float timeInSec)
+    {
+        yield return new WaitForSeconds(timeInSec);
+        upgradeMenu.SetActive(false);
+    }
     public void UpgradeTower()
 	{
 
@@ -203,7 +233,8 @@ public class TowerPlacement : MonoBehaviour
                 _currentTower = Instantiate(_selectedTowerPrefab);
 
                 // получаем спрайт выбранной башни
-                _prefabSprite = _currentTower.GetComponent<SpriteRenderer>();
+                Transform childSprite = _currentTower.transform.Find("Sprite");
+                _prefabSprite = childSprite.GetComponent<SpriteRenderer>();
                 if (_prefabSprite == null)
                 {
                     Debug.LogError("SpriteRenderer не найден на выбранной башне.");

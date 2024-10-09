@@ -24230,6 +24230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73091b2d400fdb048b10c7d4dc849f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradePanelHideTime: 0.3
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -24251,6 +24252,7 @@ MonoBehaviour:
   _playerScript: {fileID: 826728650}
   _coinAudioSource: {fileID: 1812725201}
   _coinAudioClip: {fileID: 8300000, guid: 5139fa55edf266648b2cd49c11e06ab5, type: 3}
+  _upgradeMenuAnimator: {fileID: 6307356580407826897}
   upgradeMenu: {fileID: 5663250310627872453}
   selectedUpgradePoint: {fileID: 0}
   selectedTowerToUpgrade: {fileID: 0}
@@ -26346,6 +26348,7 @@ GameObject:
   - component: {fileID: 3110281720874277173}
   - component: {fileID: 6307356580407826895}
   - component: {fileID: 6307356580407826896}
+  - component: {fileID: 6307356580407826897}
   m_Layer: 7
   m_Name: UpgradeMenuCanvas
   m_TagString: Untagged
@@ -27519,8 +27522,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a21b466827c7a47937e5751423316e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuIsOpened: 0
   upgradeMenu: {fileID: 5663250310627872453}
   selectedUpgradePoint: {fileID: 0}
+--- !u!95 &6307356580407826897
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410123341031319864}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab708d699359ee74a96a1ecda1e82354, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6541098671373259764
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Road
   - Tower
+  - BuildPoint
   layers:
   - Default
   - TransparentFX

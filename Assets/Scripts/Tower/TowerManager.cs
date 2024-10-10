@@ -11,7 +11,7 @@ public enum PlacementMode
 
 public class TowerManager : MonoBehaviour
 {
-    [SerializeField] private int _obstacles;
+    /*[SerializeField] private int _obstacles;
     [HideInInspector] public bool hasValidPlacement;
     [HideInInspector] public bool isFixed;
     private bool isInTrigger = false; // Флаг для отслеживания нахождения в триггере
@@ -82,8 +82,8 @@ public class TowerManager : MonoBehaviour
         }
     }
 
-    private bool _IsGround(GameObject o) // маска groundLayerMask из класса TowerPlacer
+   /* private bool _IsGround(GameObject o) // маска groundLayerMask из класса TowerPlacer
     {
         return ((1 << o.layer) & TowerPlacer.instance.groundLayerMask.value) != 0;
-    }
+    }*/
 }

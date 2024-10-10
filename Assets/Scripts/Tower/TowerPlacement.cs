@@ -41,7 +41,7 @@ public class TowerPlacement : MonoBehaviour
         // каждой кнопке обработчик нажатия
         for (int i = 0; i < towerButtons.Length; i++)
         {
-            int index = i; // Локальная копия переменной i для обработчика
+            int index = i; 
             towerButtons[i].onClick.AddListener(() => SelectTower(index));
         }
     }
@@ -166,9 +166,10 @@ public class TowerPlacement : MonoBehaviour
         {
             TypesOfNextUpgrades upgradeType = upgrading.upgradeType; //тип улучшения
 
-            // Теперь проверяем тип улучшения
+            //  проверяем тип улучшения
             if (upgradeType == TypesOfNextUpgrades.ArcherLVL2)
             {
+                Destroy(selectedTower.gameObject);
                 SpawnUpgradedTower(selectedTower, upgrading);
                 //Debug.Log("Archer upgraded to lvl 2");
             }

@@ -8,32 +8,55 @@ public class Bullet : MonoBehaviour
 	[SerializeField] private Rigidbody2D rb;
 
 	[Header("Attributes")]
-	[SerializeField] private float _bulletSpeed = 2f;
 	[SerializeField] private int _bulletDamage = 2;
 	[SerializeField] private float _bulletLifetime = 2f;
+	[SerializeField] private float trajectoryMaxHeight;
 
+	private float maxMoveSpeed;
+	private float _bulletSpeed;
+
+	private AnimationCurve trajectoryAnimationCurve;
+	private AnimationCurve axisCorrectionAnimationCurve;
+	private AnimationCurve bulletSpeedAnimationCurve;
 	private Transform _enemy;
-	//private GameObject _enemyObj;
+
+	private Vector3 trajectoryStartPoint; // начальная точка тректории
+
 
 	private void Start()
 	{
 		Destroy(this.gameObject, _bulletLifetime);
-		
+		trajectoryStartPoint = transform.position;
 	}
-	public void SetTarget(Transform target)
+	private void Update()
 	{
-		_enemy = target;
+		UpdateBulletPoisition();
+	}
+
+	public void InitializeBullet(Transform target, float maxMoveSpeed, float trajectoryMaxHeight)
+	{
+		this._enemy = target;
+		this.maxMoveSpeed = maxMoveSpeed;
+		this.trajectoryMaxHeight = trajectoryMaxHeight;
+	}
+	public void InitializeAnimationCurve(AnimationCurve trajectoryAnimationCurve, AnimationCurve axisCorrectionCurve, AnimationCurve bulletSpeedAnimationCurve)
+	{
+		this.trajectoryAnimationCurve = trajectoryAnimationCurve;
+		this.axisCorrectionAnimationCurve = axisCorrectionCurve;
+		this.bulletSpeedAnimationCurve = bulletSpeedAnimationCurve;
 	}
 
 	private void FixedUpdate()
 	{
 		if (!_enemy) return;
 
-		Vector2 direction = (_enemy.position - transform.position).normalized;
+		/*Vector2 direction = (_enemy.position - transform.position).normalized;
 
-		rb.velocity = direction * _bulletSpeed;
+		rb.velocity = direction * _bulletSpeed;*/
+		
 	}
 
+	
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if(collision.gameObject.TryGetComponent(out Enemy enemy))
@@ -42,6 +65,38 @@ public class Bullet : MonoBehaviour
 			//Debug.Log("enemy hitted");
 			Destroy(gameObject);
 		}	
+	}
+
+	private void UpdateBulletPoisition()
+	{
+		Vector3 trajectoryRange = _enemy.position - trajectoryStartPoint;
+
+		if(trajectoryRange.x < 0)
+		{
+			_bulletSpeed = -_bulletSpeed;
+		}
+
+		float nextPositionX = transform.position.x + _bulletSpeed * Time.deltaTime;
+		float nextPositionXNormalized = (nextPositionX - trajectoryStartPoint.x) / trajectoryRange.x;
+
+		float nextPositionYNormalized = trajectoryAnimationCurve.Evaluate(nextPositionXNormalized);
+
+		float nextPositionYCorrectionNormalized = axisCorrectionAnimationCurve.Evaluate(nextPositionXNormalized);
+		float nextPositionCorrectionAbsolute = nextPositionYCorrectionNormalized * trajectoryRange.y;
+
+		float nextPositionY = trajectoryStartPoint.y + nextPositionYNormalized * trajectoryMaxHeight + nextPositionCorrectionAbsolute;
+
+		Vector3 newPosition = new Vector3(nextPositionX, nextPositionY, 0);
+
+		CalculateNextBulletSpeed(nextPositionXNormalized);
+		transform.position = newPosition;
+	}
+
+	private void CalculateNextBulletSpeed(float nextPositionXNormalized)
+	{
+		float nextMoveSpeedNormalized = bulletSpeedAnimationCurve.Evaluate(nextPositionXNormalized);
+
+		_bulletSpeed = nextMoveSpeedNormalized * maxMoveSpeed;
 	}
 
 }

@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe85162816926e94ba63b3c9159dbbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingType: 1
   _towerRotationPoint: {fileID: 5139854330116042794}
   _enemyMask:
     serializedVersion: 2
@@ -322,9 +323,101 @@ MonoBehaviour:
   _shootPoint: {fileID: 885284744318276510}
   _audioSource: {fileID: 2658319877876219553}
   _shootSound: {fileID: 8300000, guid: 5557df80fe437cb4aaed0a75edfbddfd, type: 3}
+  trajectoryAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  axisCorrectionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bulletSpeedAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.02696228
+      value: 1.0061951
+      inSlope: 0.0019791694
+      outSlope: 0.0019791694
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.29120892
+    - serializedVersion: 3
+      time: 0.20386982
+      value: 0.45226622
+      inSlope: -0.6423342
+      outSlope: -0.6423342
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.50166744
+      outWeight: 0.11578064
+    - serializedVersion: 3
+      time: 0.90393066
+      value: 0.99331665
+      inSlope: 0.772862
+      outSlope: 0.772862
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _attackRange: 2.2
   _rotationSpeed: 200
-  _firingRate: 0.5
+  _firingRate: 1
+  bulletMaxSpeed: 2
+  bulletMaxHeight: 1
 --- !u!82 &2658319877876219553
 AudioSource:
   m_ObjectHideFlags: 0

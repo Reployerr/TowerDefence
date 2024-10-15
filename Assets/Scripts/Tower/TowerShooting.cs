@@ -6,20 +6,29 @@ using System;
 
 public class TowerShooting : MonoBehaviour
 {
+    public enum ShootingType { Default, Parabolic} //тип башни
+    [SerializeField] private ShootingType shootingType; // 
+
     private Transform _startingRotation;
 
     [Header("References")]
-    [SerializeField] private Transform _towerRotationPoint; // ����� �������� ������ ����� (���� ��� ����)
-    [SerializeField] private LayerMask _enemyMask; // ����� ������
-    [SerializeField] private GameObject _towerBullet; // ������ ������� �������� �����
-    [SerializeField] private Transform _shootPoint; // ����� ������ �������� �����   
+    [SerializeField] private Transform _towerRotationPoint; 
+    [SerializeField] private LayerMask _enemyMask; 
+    [SerializeField] private GameObject _towerBullet; 
+    [SerializeField] private Transform _shootPoint;  
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _shootSound;
+    [SerializeField] private AnimationCurve trajectoryAnimationCurve;
+    [SerializeField] private AnimationCurve axisCorrectionCurve;
+    [SerializeField] private AnimationCurve bulletSpeedAnimationCurve;
 
     [Header("Attributes")]
-    [SerializeField] private float _attackRange = 0f;
+    [SerializeField] private float _attackRange;
     [SerializeField] private float _rotationSpeed = 2f;
     [SerializeField] private float _firingRate = 1f;
+    [SerializeField] private float bulletMaxSpeed;
+    [SerializeField] private float bulletMaxHeight;
+
 
     private Transform _target = null;
     private float _timeUntilFire;
@@ -44,12 +53,12 @@ public class TowerShooting : MonoBehaviour
         }
 		else
 		{
-            _timeUntilFire += Time.deltaTime;
+            _timeUntilFire -= Time.deltaTime;
 
-            if(_timeUntilFire >= 1f / _firingRate)
+            if(_timeUntilFire <= 0f)
 			{
                 ShootEnemy();
-                _timeUntilFire = 0f;
+                _timeUntilFire = _firingRate;
 			}
         }
 
@@ -57,14 +66,37 @@ public class TowerShooting : MonoBehaviour
 
     public void ShootEnemy()
     {
+        if (shootingType == ShootingType.Default)
+        {
+            PlayShootSound();
+            //GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation);
+            Bullet bullet = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation).GetComponent<Bullet>();
+            // Bullet bulletScript = bulletObj.GetComponent<Bullet>();
+            //bulletScript.InitializeBullet(_target, bulletSpeed, bulletMaxHeight);
+            bullet.InitializeBullet(_target, bulletMaxSpeed, bulletMaxHeight);
+
+
+
+        }
+
+       else if (shootingType == ShootingType.Parabolic)
+		{
+            PlayShootSound();
+            //GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation);
+            Bullet bullet = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation).GetComponent<Bullet>();
+            // Bullet bulletScript = bulletObj.GetComponent<Bullet>();
+            //bulletScript.InitializeBullet(_target, bulletSpeed, bulletMaxHeight);
+            bullet.InitializeBullet(_target, bulletMaxSpeed, bulletMaxHeight);
+            bullet.InitializeAnimationCurve(trajectoryAnimationCurve, axisCorrectionCurve, bulletSpeedAnimationCurve);
+
+        }	
+         
+    }
+    private void PlayShootSound()
+	{
         _audioSource.pitch = UnityEngine.Random.Range(1f, 2f);
         _audioSource.PlayOneShot(_shootSound);
-        GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation);
-        Bullet bulletScript = bulletObj.GetComponent<Bullet>();
-        bulletScript.SetTarget(_target);
-
     }
-
     private void FindTarget()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _attackRange, (Vector2)transform.position, 0f, _enemyMask); 

@@ -7,7 +7,7 @@ using System;
 public class TowerShooting : MonoBehaviour
 {
     public enum ShootingType { Default, Parabolic} //тип башни
-    [SerializeField] private ShootingType shootingType; // 
+    [SerializeField] public ShootingType shootingType; // 
 
     private Transform _startingRotation;
 
@@ -62,6 +62,10 @@ public class TowerShooting : MonoBehaviour
 			}
         }
 
+    }
+    public ShootingType GetShootingType()
+    {
+        return shootingType;
     }
 
     public void ShootEnemy()

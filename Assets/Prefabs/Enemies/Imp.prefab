@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4740224652600757794}
   - component: {fileID: 3749958379848433674}
   - component: {fileID: -5101196563272938099}
+  - component: {fileID: 684599824583714635}
   m_Layer: 9
   m_Name: Imp
   m_TagString: Untagged
@@ -132,6 +133,27 @@ MonoBehaviour:
   minWorth: 4
   maxWorth: 6
   worthIsFixed: 0
+--- !u!95 &684599824583714635
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186901387746869363}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77e5ad2cc4afacc449df33a76bf74631, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2201395865762643817
 GameObject:
   m_ObjectHideFlags: 0

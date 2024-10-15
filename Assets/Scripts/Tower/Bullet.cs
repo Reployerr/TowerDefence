@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
 	[Header("References")]
 	[SerializeField] private Rigidbody2D rb;
+	[SerializeField] private TowerShooting towerScript; //ссылка на родительскую башню
 
 	[Header("Attributes")]
 	[SerializeField] private int _bulletDamage = 2;
@@ -22,7 +23,10 @@ public class Bullet : MonoBehaviour
 
 	private Vector3 trajectoryStartPoint; // начальная точка тректории
 
-
+	private void Awake()
+	{
+		towerScript = FindObjectOfType<TowerShooting>();
+	}
 	private void Start()
 	{
 		Destroy(this.gameObject, _bulletLifetime);
@@ -30,7 +34,19 @@ public class Bullet : MonoBehaviour
 	}
 	private void Update()
 	{
-		UpdateBulletPoisition();
+		if (!_enemy) return;
+
+		if (towerScript.shootingType == TowerShooting.ShootingType.Parabolic)
+		{
+			ArcBulletUpdatingPosition();//стрельба по дуге
+		}
+		else if(towerScript.shootingType == TowerShooting.ShootingType.Default)
+		{
+			Vector2 direction = (_enemy.position - transform.position).normalized;
+
+			rb.velocity = direction * _bulletSpeed;
+		}
+		
 	}
 
 	public void InitializeBullet(Transform target, float maxMoveSpeed, float trajectoryMaxHeight)
@@ -48,11 +64,6 @@ public class Bullet : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (!_enemy) return;
-
-		/*Vector2 direction = (_enemy.position - transform.position).normalized;
-
-		rb.velocity = direction * _bulletSpeed;*/
 		
 	}
 
@@ -67,7 +78,7 @@ public class Bullet : MonoBehaviour
 		}	
 	}
 
-	private void UpdateBulletPoisition()
+	private void ArcBulletUpdatingPosition()
 	{
 		Vector3 trajectoryRange = _enemy.position - trajectoryStartPoint;
 

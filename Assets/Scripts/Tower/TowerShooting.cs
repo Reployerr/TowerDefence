@@ -6,8 +6,7 @@ using System;
 
 public class TowerShooting : MonoBehaviour
 {
-    public enum ShootingType { Default, Parabolic} //тип башни
-    [SerializeField] public ShootingType shootingType; // 
+    
 
     private Transform _startingRotation;
 
@@ -32,6 +31,8 @@ public class TowerShooting : MonoBehaviour
 
     private Transform _target = null;
     private float _timeUntilFire;
+    public enum ShootingType { Default, Parabolic, Canon } //тип стрельбы башни
+    [SerializeField] private ShootingType shootingType;  
 
     private void Awake()
     {
@@ -40,7 +41,9 @@ public class TowerShooting : MonoBehaviour
 
     private void Update()
     {
-        if(_target == null)
+       
+
+        if (_target == null)
         {
             FindTarget();
             return;
@@ -78,12 +81,9 @@ public class TowerShooting : MonoBehaviour
             // Bullet bulletScript = bulletObj.GetComponent<Bullet>();
             //bulletScript.InitializeBullet(_target, bulletSpeed, bulletMaxHeight);
             bullet.InitializeBullet(_target, bulletMaxSpeed, bulletMaxHeight);
-
-
-
         }
 
-       else if (shootingType == ShootingType.Parabolic)
+       else if (shootingType == ShootingType.Canon)
 		{
             PlayShootSound();
             //GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation);
@@ -93,8 +93,19 @@ public class TowerShooting : MonoBehaviour
             bullet.InitializeBullet(_target, bulletMaxSpeed, bulletMaxHeight);
             bullet.InitializeAnimationCurve(trajectoryAnimationCurve, axisCorrectionCurve, bulletSpeedAnimationCurve);
 
-        }	
-         
+        }
+        else if (shootingType == ShootingType.Parabolic)
+        {
+            PlayShootSound();
+            //GameObject bulletObj = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation);
+            Bullet bullet = Instantiate(_towerBullet, _shootPoint.position, _towerRotationPoint.rotation).GetComponent<Bullet>();
+            // Bullet bulletScript = bulletObj.GetComponent<Bullet>();
+            //bulletScript.InitializeBullet(_target, bulletSpeed, bulletMaxHeight);
+            bullet.InitializeBullet(_target, bulletMaxSpeed, bulletMaxHeight);
+            bullet.InitializeAnimationCurve(trajectoryAnimationCurve, axisCorrectionCurve, bulletSpeedAnimationCurve);
+
+        }
+
     }
     private void PlayShootSound()
 	{

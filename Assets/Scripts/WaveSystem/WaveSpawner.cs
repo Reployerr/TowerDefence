@@ -46,7 +46,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("isFirstWave of WaveSpawner = " + isFirstWave);
+        //Debug.Log("isFirstWave of WaveSpawner = " + isFirstWave);
         if (!isSpawning) return;
 
         _timeSinceLastSpawn += Time.deltaTime;

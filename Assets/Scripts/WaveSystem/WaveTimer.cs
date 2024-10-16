@@ -36,7 +36,7 @@ public class WaveTimer : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("isFirstWave of Wave Timer = " + isFirstWave);
+        //Debug.Log("isFirstWave of Wave Timer = " + isFirstWave);
         // Уменьшаем текущее время, если таймер активен
         if (_currentTime > 0)
         {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4866197837819413394}
   - component: {fileID: 5564614052288756000}
   - component: {fileID: 6260474796803443229}
+  - component: {fileID: -8528523930039934481}
   m_Layer: 10
   m_Name: bullet_Arrow
   m_TagString: Untagged
@@ -75,9 +76,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4866197837819413394}
-  _bulletSpeed: 5
+  towerScript: {fileID: 0}
+  parentTower: {fileID: 1882584235060264164, guid: a1596451d2b3e4a459828a9386610fe3, type: 3}
   _bulletDamage: 1
   _bulletLifetime: 1
+  trajectoryMaxHeight: 0
 --- !u!61 &6260474796803443229
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,6 +126,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21941541, y: 1.4262923}
   m_EdgeRadius: 0
+--- !u!114 &-8528523930039934481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819171185637651769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9332b1cf52592d940bc9bcc1457b20fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletVisual: {fileID: 4468077267911463956}
+  bullet: {fileID: 5564614052288756000}
 --- !u!1 &8569414189919137042
 GameObject:
   m_ObjectHideFlags: 0

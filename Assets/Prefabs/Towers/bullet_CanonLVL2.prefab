@@ -159,9 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4305689762855879908}
-  _bulletSpeed: 3
+  towerScript: {fileID: -1678773812511235412, guid: 677075f715bbcc7469c09a8ab54e82cf, type: 3}
   _bulletDamage: 5
   _bulletLifetime: 2
+  trajectoryMaxHeight: 0
 --- !u!58 &5691617676870566310
 CircleCollider2D:
   m_ObjectHideFlags: 0

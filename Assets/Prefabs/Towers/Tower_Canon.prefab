@@ -314,7 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe85162816926e94ba63b3c9159dbbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingType: 1
   _towerRotationPoint: {fileID: 5139854330116042794}
   _enemyMask:
     serializedVersion: 2
@@ -418,6 +417,7 @@ MonoBehaviour:
   _firingRate: 1
   bulletMaxSpeed: 2
   bulletMaxHeight: 1
+  shootingType: 2
 --- !u!82 &2658319877876219553
 AudioSource:
   m_ObjectHideFlags: 0

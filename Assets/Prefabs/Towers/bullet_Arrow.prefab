@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5819171185637651769}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.170772, y: 0.170772, z: 0.170772}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,7 +79,7 @@ MonoBehaviour:
   towerScript: {fileID: 0}
   parentTower: {fileID: 1882584235060264164, guid: a1596451d2b3e4a459828a9386610fe3, type: 3}
   _bulletDamage: 1
-  _bulletLifetime: 1
+  _bulletLifetime: 5
   trajectoryMaxHeight: 0
 --- !u!61 &6260474796803443229
 BoxCollider2D:
@@ -118,7 +118,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.61, y: 0.58}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 2.61, y: 0.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5819171185637651769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9332b1cf52592d940bc9bcc1457b20fb, type: 3}
   m_Name: 
@@ -165,13 +165,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8569414189919137042}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.71488076, y: 0.9086272, z: 0.21698561}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1769523625162332789}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &883666011789662060
 SpriteRenderer:
   m_ObjectHideFlags: 0

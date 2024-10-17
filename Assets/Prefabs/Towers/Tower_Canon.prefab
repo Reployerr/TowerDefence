@@ -415,7 +415,7 @@ MonoBehaviour:
   _attackRange: 2.2
   _rotationSpeed: 200
   _firingRate: 1
-  bulletMaxSpeed: 2
+  bulletMaxSpeed: 8
   bulletMaxHeight: 1
   shootingType: 2
 --- !u!82 &2658319877876219553

@@ -8,12 +8,12 @@ public class WaveSpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private TMP_Text wavesText;
-    [SerializeField] private WaveTimer waveTimer;  // Ссылка на скрипт таймера
+    [SerializeField] private WaveTimer waveTimer; 
 
     [Header("Attributes")]
     [SerializeField] private int _baseEnemies = 3;
     [SerializeField] private float _enemiesPerSecond = 0.5f;
-    [SerializeField] private float _timeBetweenWaves = 10f;  // Время до старта новой волны для корутины
+    [SerializeField] private float _timeBetweenWaves = 10f;  // Время до старта новой волны 
     [SerializeField] private float _baseTimeBetweenWaves = 10f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
     [SerializeField] private float enemiesPerSecondCap = 15f;

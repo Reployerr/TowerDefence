@@ -1,11 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Events")]
+    public UnityEvent EndRound;
+
+    [Header("References")]
+    [SerializeField] private GameObject levelCompletedPanel;
+
     public static LevelManager main;
 
+    [Header("Level Path")]
     public Transform startPoint;
     public Transform [] path;
 
@@ -14,9 +22,14 @@ public class LevelManager : MonoBehaviour
         main = this;
     }
 
-   /* private void Start()
-    {
-        Debug.Log(path.Length);
-    }
-   */
+    public void CompletingStage()
+	{
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
+
+        ///back to map logic///
+        /////
+        ///
+	}
+
 }

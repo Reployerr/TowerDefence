@@ -406,9 +406,120 @@ MonoBehaviour:
   _shootPoint: {fileID: 5830182992545626235}
   _audioSource: {fileID: 7648657933151712392}
   _shootSound: {fileID: 8300000, guid: 58af4307f89b5de408bef1cd2c7c8d99, type: 3}
+  trajectoryAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.412523
+      outSlope: 1.412523
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.20727098
+      value: 0.29277503
+      inSlope: 0.39095095
+      outSlope: 0.39095095
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.41934204
+      value: 0.15903854
+      inSlope: -0.13058582
+      outSlope: -0.13058582
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7914619
+      value: 0.29651803
+      inSlope: -0.52621967
+      outSlope: -0.52621967
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.4218888
+      outSlope: -1.4218888
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  axisCorrectionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bulletSpeedAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.02696228
+      value: 1.0061951
+      inSlope: 0.0019791694
+      outSlope: 0.0019791694
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.29120892
+    - serializedVersion: 3
+      time: 0.20386982
+      value: 0.45226622
+      inSlope: -0.6423342
+      outSlope: -0.6423342
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.50166744
+      outWeight: 0.11578064
+    - serializedVersion: 3
+      time: 0.90393066
+      value: 0.99331665
+      inSlope: 0.772862
+      outSlope: 0.772862
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _attackRange: 1.8
   _rotationSpeed: 2
-  _firingRate: 0.75
+  _firingRate: 1.3
+  bulletMaxSpeed: 3
+  bulletMaxHeight: 1
+  shootingType: 2
 --- !u!82 &7648657933151712392
 AudioSource:
   m_ObjectHideFlags: 0

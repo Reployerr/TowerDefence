@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+
+    public UnityEvent playerDeath;
+    
+
     [Header("Variables")]
-    [SerializeField] private int _playerHealth;
-    [SerializeField] public int _playerMoney;
+    public int _playerMoney;
+    public int _playerHealth = 12;
 
     [Header("References")]
     [SerializeField] private GameObject playerUI;
@@ -13,6 +18,8 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
+        playerDeath.AddListener(GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().PlayerDeath);
+
         UI_Health health = playerUI.GetComponent<UI_Health>();
         playerHealthUI = health;
         playerHealthUI.InitializeHealth(_playerHealth);
@@ -31,10 +38,20 @@ public class Player : MonoBehaviour
             Debug.Log($"Player received {damage} damage");
             playerHealthUI.DecreaseHealth(_playerHealth);
         }
-		else
-		{
-            Debug.Log("Player died");
-		}
+        if (_playerHealth <= 0)
+        {
+            Debug.Log("Player dead");
+            playerDeath.Invoke();
+
+        }
+
+    }
+
+    public void PlayerDeath()
+	{
+        playerHealthUI.DeathPanelUpdateState();
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
 
     }
 

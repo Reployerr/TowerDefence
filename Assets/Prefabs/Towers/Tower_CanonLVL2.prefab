@@ -320,9 +320,30 @@ MonoBehaviour:
   _shootPoint: {fileID: 885284744318276510}
   _audioSource: {fileID: 2658319877876219553}
   _shootSound: {fileID: 8300000, guid: 5557df80fe437cb4aaed0a75edfbddfd, type: 3}
+  trajectoryAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  axisCorrectionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bulletSpeedAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _attackRange: 2.2
   _rotationSpeed: 200
-  _firingRate: 0.5
+  _firingRate: 1.3
+  bulletMaxSpeed: 5
+  bulletMaxHeight: 1
+  shootingType: 2
 --- !u!82 &2658319877876219553
 AudioSource:
   m_ObjectHideFlags: 0

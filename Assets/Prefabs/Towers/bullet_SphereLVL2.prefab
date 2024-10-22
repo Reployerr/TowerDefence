@@ -75,9 +75,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5118815981180555511}
-  _bulletSpeed: 2.5
-  _bulletDamage: 4
-  _bulletLifetime: 2
+  towerScript: {fileID: 0}
+  parentTower: {fileID: 7310343824496229373, guid: 87d4c2090ca9ac34687233f61e9731d9, type: 3}
+  _bulletDamage: 7
+  _bulletLifetime: 4
+  trajectoryMaxHeight: 0
 --- !u!58 &5212908769226785469
 CircleCollider2D:
   m_ObjectHideFlags: 0

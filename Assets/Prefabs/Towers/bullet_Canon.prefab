@@ -135,8 +135,8 @@ MonoBehaviour:
   rb: {fileID: -5592368574743040696}
   towerScript: {fileID: 0}
   parentTower: {fileID: 7822859280619303622, guid: 587843290136e1e43ba8094e1320a1ca, type: 3}
-  _bulletDamage: 5
-  _bulletLifetime: 2
+  _bulletDamage: 4
+  _bulletLifetime: 4
   trajectoryMaxHeight: 1
 --- !u!58 &5691617676870566310
 CircleCollider2D:

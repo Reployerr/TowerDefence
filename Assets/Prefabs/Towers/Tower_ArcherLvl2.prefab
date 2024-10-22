@@ -157,9 +157,102 @@ MonoBehaviour:
   _shootPoint: {fileID: 6506518535706032267}
   _audioSource: {fileID: 578088279683759940}
   _shootSound: {fileID: 8300000, guid: 92aa390722856314787cc29badd0cb2a, type: 3}
+  trajectoryAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  axisCorrectionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bulletSpeedAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.02696228
+      value: 1.0061951
+      inSlope: 0.0019791694
+      outSlope: 0.0019791694
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.29120892
+    - serializedVersion: 3
+      time: 0.20386982
+      value: 0.45226622
+      inSlope: -0.6423342
+      outSlope: -0.6423342
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.50166744
+      outWeight: 0.11578064
+    - serializedVersion: 3
+      time: 0.90393066
+      value: 0.99331665
+      inSlope: 0.772862
+      outSlope: 0.772862
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _attackRange: 4.2
   _rotationSpeed: 300
-  _firingRate: 1.7
+  _firingRate: 0.7
+  bulletMaxSpeed: 9
+  bulletMaxHeight: 0.7
+  shootingType: 0
 --- !u!114 &2690156312146047244
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -166,22 +166,26 @@ public class TowerPlacement : MonoBehaviour
         {
             TypesOfNextUpgrades upgradeType = upgrading.upgradeType; //тип улучшения
 
-            //  проверяем тип улучшения
-            if (upgradeType == TypesOfNextUpgrades.ArcherLVL2)
-            {
-                Destroy(selectedTower.gameObject);
-                SpawnUpgradedTower(selectedTower, upgrading);
-                //Debug.Log("Archer upgraded to lvl 2");
-            }
-            else if (upgradeType == TypesOfNextUpgrades.CanonLVL2)
-            {
-                SpawnUpgradedTower(selectedTower, upgrading);
+            if (_playerScript._playerMoney >= selectedTower.cost) // если хватает денег
+			{
+                //  тип улучшения
+                if (upgradeType == TypesOfNextUpgrades.ArcherLVL2)
+                {
+                    Destroy(selectedTower.gameObject);
+                    SpawnUpgradedTower(selectedTower, upgrading);
+                    //Debug.Log("Archer upgraded to lvl 2");
+                }
+                else if (upgradeType == TypesOfNextUpgrades.CanonLVL2)
+                {
+                    SpawnUpgradedTower(selectedTower, upgrading);
 
+                }
+                else if (upgradeType == TypesOfNextUpgrades.MageLVL2)
+                {
+                    SpawnUpgradedTower(selectedTower, upgrading);
+                }
             }
-            else if (upgradeType == TypesOfNextUpgrades.MageLVL2)
-            {
-                SpawnUpgradedTower(selectedTower, upgrading);
-            }
+                
             else
             {
                 Debug.Log("не выбрано улучшение");

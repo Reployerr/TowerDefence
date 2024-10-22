@@ -253,33 +253,7 @@ MonoBehaviour:
   _firingRate: 1
   bulletMaxSpeed: 8
   bulletMaxHeight: 0.7
-  arcDuration: 21.21
-  arcHeight: 3.98
-  arcAnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  shootingType: 3
+  shootingType: 0
 --- !u!114 &2690156312146047244
 MonoBehaviour:
   m_ObjectHideFlags: 0
